@@ -45,7 +45,7 @@ public class ListDistancesInvoker {
 		JFrame frame = new JFrame("Image Distances List");
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(0, 1));
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 15; i++) {
 			int imageId = imageIds[i] + 1;
 			ImageIcon icon = new ImageIcon(new File(THUMBNAIL_IMAGE_DIRECTORY, "im" + imageId + ".jpg").getAbsolutePath());
 			String text = "" + imageId + " " + referenceImage.distanceTo(imageSummaries[imageId - 1]);
