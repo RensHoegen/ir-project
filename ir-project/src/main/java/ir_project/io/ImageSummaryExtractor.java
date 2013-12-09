@@ -12,12 +12,26 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 public class ImageSummaryExtractor {
-	private static final int BLUR_RADIUS = 10;
 	private static final int NUMBER_OF_AREAS = 2;
+	private static final Color[] COLORS = createColors();
 
 	public static ImageSummary extractImageSummary(InputStream imageStream) throws IOException {
 		BufferedImage image = ImageIO.read(imageStream);
 		return extractImageSummaryInternal(image);
+	}
+
+	private static Color[] createColors() {
+		Color[] colors = new Color[4 * 4 * 4];
+		int index = 0;
+		for (int r = 0; r < 4; r++) {
+			for (int g = 0; g < 4; g++) {
+				for (int b = 0; b < 4; b++) {
+					colors[index] = new Color(r * 64 + 32, g * 64 + 32, b * 64 + 32);
+					index++;
+				}
+			}
+		}
+		return colors;
 	}
 
 	public static ImageSummary extractImageSummary(File imageFile) throws IOException {
@@ -41,40 +55,36 @@ public class ImageSummaryExtractor {
 		int yStart = image.getHeight() * areaY / NUMBER_OF_AREAS;
 		int yEnd = image.getHeight() * (areaY + 1) / NUMBER_OF_AREAS;
 
-		double[] redHistogram = new double[256];
-		double[] greenHistogram = new double[256];
-		double[] blueHistogram = new double[256];
-		int pixelCount = 0;
+		double[] histogram = new double[COLORS.length];
 		for (int x = xStart; x < xEnd; x++) {
 			for (int y = yStart; y < yEnd; y++) {
 				Color pixelColor = new Color(image.getRGB(x, y));
-				redHistogram[pixelColor.getRed()] += 1.0d;
-				greenHistogram[pixelColor.getGreen()] += 1.0d;
-				blueHistogram[pixelColor.getBlue()] += 1.0d;
-				pixelCount++;
+				addPixelToHistogram(histogram, pixelColor);
 			}
 		}
-		for (int i = 0; i < 256; i++) {
-			redHistogram[i] /= pixelCount;
-			greenHistogram[i] /= pixelCount;
-			blueHistogram[i] /= pixelCount;
+
+		double histogramSum = 0.0d;
+		for (int i = 0; i < histogram.length; i++) {
+			histogramSum += histogram[i];
 		}
-		return new ImageAreaSummary(applyBlur(redHistogram), applyBlur(greenHistogram), applyBlur(blueHistogram));
+		for (int i = 0; i < histogram.length; i++) {
+			histogram[i] /= histogramSum;
+		}
+
+		return new ImageAreaSummary(histogram);
 	}
 
-	private static double[] applyBlur(double[] originalHistogram) {
-		double[] histogram = new double[256];
-
-		for (int i = 0; i < 255; i++) {
-			double count = 0;
-			for (int j = Math.max(0, i - BLUR_RADIUS); j < Math.min(i + BLUR_RADIUS, 255); j++) {
-				double multiplier = 1 - Math.pow(i - j, 2) * 1.0d / Math.pow(BLUR_RADIUS + 1, 2);
-				histogram[i] += multiplier * originalHistogram[j];
-				count += multiplier;
-			}
-			histogram[i] /= count;
+	private static void addPixelToHistogram(double[] histogram, Color pixelColor) {
+		for (int i = 0; i < COLORS.length; i++) {
+			double dist = calculateDistanceBetweenColors(COLORS[i], pixelColor);
+			histogram[i] += 1 / dist;
 		}
+	}
 
-		return histogram;
+	private static double calculateDistanceBetweenColors(Color colorA, Color colorB) {
+		int redDiff = colorA.getRed() - colorB.getRed();
+		int greenDiff = colorA.getGreen() - colorB.getGreen();
+		int blueDiff = colorA.getBlue() - colorB.getBlue();
+		return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff * blueDiff);
 	}
 }

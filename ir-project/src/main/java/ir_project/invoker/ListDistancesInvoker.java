@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 public class ListDistancesInvoker {
 	private static final int NUMBER_OF_IMAGES_TO_LOAD = 10000;
 	public final static File THUMBNAIL_IMAGE_DIRECTORY = new File("/home/stefan/Downloads/image_thumbnails/");
-	public final static int REFERENCE_IMAGE_ID = 8;
+	public final static int REFERENCE_IMAGE_ID = 645;
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("Loading...");
