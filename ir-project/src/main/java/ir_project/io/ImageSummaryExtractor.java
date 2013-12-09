@@ -8,30 +8,32 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class ImageSummaryExtractor {
 	private static final int NUMBER_OF_AREAS = 2;
-	private static final Color[] COLORS = createColors();
+	private static final Color[] COLORS = createReferenceColors();
 
 	public static ImageSummary extractImageSummary(InputStream imageStream) throws IOException {
 		BufferedImage image = ImageIO.read(imageStream);
 		return extractImageSummaryInternal(image);
 	}
 
-	private static Color[] createColors() {
-		Color[] colors = new Color[4 * 4 * 4];
-		int index = 0;
-		for (int r = 0; r < 4; r++) {
-			for (int g = 0; g < 4; g++) {
-				for (int b = 0; b < 4; b++) {
-					colors[index] = new Color(r * 64 + 32, g * 64 + 32, b * 64 + 32);
-					index++;
-				}
+	private static Color[] createReferenceColors() {
+		List<Color> colors = new ArrayList<Color>();
+
+		colors.add(Color.BLACK);
+		colors.add(Color.WHITE);
+		colors.add(Color.GRAY);
+		for (float h = 0; h < 1.0f; h += 0.05f) {
+			for (float b : new float[] { 0.50f, 0.85f }) {
+				colors.add(Color.getHSBColor(h, 0.75f, b));
 			}
 		}
-		return colors;
+		return colors.toArray(new Color[0]);
 	}
 
 	public static ImageSummary extractImageSummary(File imageFile) throws IOException {
@@ -75,9 +77,16 @@ public class ImageSummaryExtractor {
 	}
 
 	private static void addPixelToHistogram(double[] histogram, Color pixelColor) {
+		double[] weightPerColor = new double[COLORS.length];
+		double weightSum = 0.0d;
 		for (int i = 0; i < COLORS.length; i++) {
-			double dist = calculateDistanceBetweenColors(COLORS[i], pixelColor);
-			histogram[i] += 1 / dist;
+			double distance = calculateDistanceBetweenColors(COLORS[i], pixelColor);
+			double weight = 1 / distance / distance;
+			weightPerColor[i] = weight;
+			weightSum += weight;
+		}
+		for (int i = 0; i < COLORS.length; i++) {
+			histogram[i] += weightPerColor[i] / weightSum;
 		}
 	}
 
