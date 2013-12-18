@@ -1,4 +1,4 @@
-package interface_IR;
+package ir_project.gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,7 +22,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
-public class InterfaceIR {
+public class GuiInvoker {
 
 	private JFrame frame;
 	private JLabel statusbar;
@@ -34,7 +34,7 @@ public class InterfaceIR {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InterfaceIR window = new InterfaceIR();
+					GuiInvoker window = new GuiInvoker();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class InterfaceIR {
 	/**
 	 * Create the application.
 	 */
-	public InterfaceIR() {
+	public GuiInvoker() {
 		initialize();
 
 	}
@@ -77,8 +77,8 @@ public class InterfaceIR {
 		image_1.setBounds(85, 181, 150, 150);
 		image_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_1.setAlignmentY(Component.TOP_ALIGNMENT);
-		image_1.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/1.jpg")));
+		image_1.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("1.jpg")));
 		image_1.setIconTextGap(10);
 		image_1.setPreferredSize(new Dimension(150, 150));
 		image_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
@@ -89,8 +89,8 @@ public class InterfaceIR {
 
 		JLabel image_2 = new JLabel("2");
 		image_2.setBounds(245, 181, 150, 150);
-		image_2.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/2.jpeg")));
+		image_2.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("2.jpeg")));
 		image_2.setPreferredSize(new Dimension(150, 150));
 		image_2.setIconTextGap(10);
 		image_2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -100,8 +100,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_2);
 
 		JLabel image_3 = new JLabel("3");
-		image_3.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/3.jpg")));
+		image_3.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("3.jpg")));
 		image_3.setPreferredSize(new Dimension(150, 150));
 		image_3.setIconTextGap(10);
 		image_3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -112,8 +112,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_3);
 
 		JLabel image_4 = new JLabel("4");
-		image_4.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/4.jpg")));
+		image_4.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("4.jpg")));
 		image_4.setPreferredSize(new Dimension(150, 150));
 		image_4.setIconTextGap(10);
 		image_4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -124,8 +124,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_4);
 
 		JLabel image_5 = new JLabel("5");
-		image_5.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/5.jpeg")));
+		image_5.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("5.jpeg")));
 		image_5.setPreferredSize(new Dimension(150, 150));
 		image_5.setIconTextGap(10);
 		image_5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -136,8 +136,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_5);
 
 		JLabel image_6 = new JLabel("6");
-		image_6.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/6.jpg")));
+		image_6.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("6.jpg")));
 		image_6.setPreferredSize(new Dimension(150, 150));
 		image_6.setIconTextGap(10);
 		image_6.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -148,8 +148,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_6);
 
 		JLabel image_7 = new JLabel("7");
-		image_7.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/7.jpeg")));
+		image_7.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("7.jpeg")));
 		image_7.setPreferredSize(new Dimension(150, 150));
 		image_7.setIconTextGap(10);
 		image_7.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -160,8 +160,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_7);
 
 		JLabel image_8 = new JLabel("8");
-		image_8.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/8.jpg")));
+		image_8.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("8.jpg")));
 		image_8.setPreferredSize(new Dimension(150, 150));
 		image_8.setIconTextGap(10);
 		image_8.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -172,8 +172,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_8);
 
 		JLabel image_9 = new JLabel("9");
-		image_9.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/9.jpg")));
+		image_9.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("9.jpg")));
 		image_9.setPreferredSize(new Dimension(150, 150));
 		image_9.setIconTextGap(10);
 		image_9.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -184,8 +184,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_9);
 
 		JLabel image_10 = new JLabel("10");
-		image_10.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/10.jpeg")));
+		image_10.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("10.jpeg")));
 		image_10.setPreferredSize(new Dimension(150, 150));
 		image_10.setIconTextGap(10);
 		image_10.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -196,8 +196,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_10);
 
 		JLabel image_11 = new JLabel("11");
-		image_11.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/11.jpeg")));
+		image_11.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("11.jpeg")));
 		image_11.setPreferredSize(new Dimension(150, 150));
 		image_11.setIconTextGap(10);
 		image_11.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -208,8 +208,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_11);
 
 		JLabel image_12 = new JLabel("12");
-		image_12.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/12.jpeg")));
+		image_12.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("12.jpeg")));
 		image_12.setPreferredSize(new Dimension(150, 150));
 		image_12.setIconTextGap(10);
 		image_12.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -220,8 +220,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_12);
 
 		JLabel image_13 = new JLabel("13");
-		image_13.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/13.jpeg")));
+		image_13.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("13.jpeg")));
 		image_13.setPreferredSize(new Dimension(150, 150));
 		image_13.setIconTextGap(10);
 		image_13.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -232,8 +232,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_13);
 
 		JLabel image_14 = new JLabel("14");
-		image_14.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/14.jpeg")));
+		image_14.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("14.jpeg")));
 		image_14.setPreferredSize(new Dimension(150, 150));
 		image_14.setIconTextGap(10);
 		image_14.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -244,8 +244,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_14);
 
 		JLabel image_15 = new JLabel("15");
-		image_15.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/15.jpg")));
+		image_15.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("15.jpg")));
 		image_15.setPreferredSize(new Dimension(150, 150));
 		image_15.setIconTextGap(10);
 		image_15.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -256,8 +256,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_15);
 
 		JLabel image_16 = new JLabel("16");
-		image_16.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/16.jpg")));
+		image_16.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("16.jpg")));
 		image_16.setPreferredSize(new Dimension(150, 150));
 		image_16.setIconTextGap(10);
 		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -268,8 +268,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(image_16);
 
 		JLabel Status_1 = new JLabel("Image 1");
-		Status_1.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/state_active.png")));
+		Status_1.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("state_active.png")));
 		Status_1.setPreferredSize(new Dimension(75, 75));
 		Status_1.setMinimumSize(new Dimension(0, 0));
 		Status_1.setMaximumSize(new Dimension(0, 0));
@@ -281,8 +281,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(Status_1);
 
 		JLabel Status_2 = new JLabel("Image 1");
-		Status_2.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/state_normal.png")));
+		Status_2.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("state_normal.png")));
 		Status_2.setPreferredSize(new Dimension(75, 75));
 		Status_2.setMinimumSize(new Dimension(0, 0));
 		Status_2.setMaximumSize(new Dimension(0, 0));
@@ -294,8 +294,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(Status_2);
 
 		JLabel Status_3 = new JLabel("Image 1");
-		Status_3.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/state_normal.png")));
+		Status_3.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("state_normal.png")));
 		Status_3.setPreferredSize(new Dimension(75, 75));
 		Status_3.setMinimumSize(new Dimension(0, 0));
 		Status_3.setMaximumSize(new Dimension(0, 0));
@@ -307,8 +307,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(Status_3);
 
 		JLabel Status_4 = new JLabel("Image 1");
-		Status_4.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/state_normal.png")));
+		Status_4.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("state_normal.png")));
 		Status_4.setPreferredSize(new Dimension(75, 75));
 		Status_4.setMinimumSize(new Dimension(0, 0));
 		Status_4.setMaximumSize(new Dimension(0, 0));
@@ -320,8 +320,8 @@ public class InterfaceIR {
 		frame.getContentPane().add(Status_4);
 
 		JLabel Status_5 = new JLabel("Image 1");
-		Status_5.setIcon(new ImageIcon(InterfaceIR.class
-				.getResource("/interface_IR/images/state_normal.png")));
+		Status_5.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("state_normal.png")));
 		Status_5.setPreferredSize(new Dimension(75, 75));
 		Status_5.setMinimumSize(new Dimension(0, 0));
 		Status_5.setMaximumSize(new Dimension(0, 0));
