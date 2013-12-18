@@ -61,7 +61,7 @@ public class GuiInvoker {
 		frame.getContentPane().setBackground(new Color(112, 128, 144));
 		frame.setBackground(SystemColor.activeCaption);
 		frame.getContentPane().setFont(
-				new Font("Century Gothic", Font.PLAIN, 14));
+				new Font("Century Gothic", Font.PLAIN, 16));
 		frame.getContentPane().setLayout(null);
 
 		statusbar = new JLabel("image_1 status");
