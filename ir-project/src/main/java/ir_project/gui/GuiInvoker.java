@@ -14,7 +14,7 @@ import javax.swing.border.LineBorder;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
-import java.awt.Frame;
+
 import java.awt.SystemColor;
 import java.awt.Cursor;
 import java.awt.event.MouseListener;
