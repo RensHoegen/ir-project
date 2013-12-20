@@ -20,6 +20,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.Toolkit;
 
 public class GuiInvoker {
 
@@ -55,11 +56,18 @@ public class GuiInvoker {
 	 */
 	private void initialize() {
 		frmClusteredImageRetrieval = new JFrame();
+		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
+				ComponentOrientation.LEFT_TO_RIGHT);
+		frmClusteredImageRetrieval
+				.setIconImage(Toolkit
+						.getDefaultToolkit()
+						.getImage(
+								"/Users/Robert/Documents/workspace/maven.1387453149530/ir-project/src/main/resources/ir_project/gui/gui.png"));
+
 		frmClusteredImageRetrieval.setTitle("Clustered Image Retrieval System");
 		frmClusteredImageRetrieval.getContentPane().setCursor(
 				Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().setBackground(
-				new Color(112, 128, 144));
+
 		frmClusteredImageRetrieval.setBackground(SystemColor.activeCaption);
 		frmClusteredImageRetrieval.getContentPane().setFont(
 				new Font("Century Gothic", Font.PLAIN, 16));
@@ -68,32 +76,32 @@ public class GuiInvoker {
 		statusbar = new JLabel("image_1 status");
 		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		statusbar.setBounds(245, 122, 312, 54);
+		statusbar.setBounds(886, 355, 312, 54);
 		statusbar.setPreferredSize(new Dimension(150, 150));
 		frmClusteredImageRetrieval.getContentPane().add(statusbar);
 
 		Handlerclass handler = new Handlerclass();
 
 		JLabel image_1 = new JLabel("1");
-		image_1.setBounds(85, 181, 150, 150);
+		image_1.setBounds(21, 20, 150, 150);
 		image_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_1.setAlignmentY(Component.TOP_ALIGNMENT);
 		image_1.setIcon(new ImageIcon(GuiInvoker.class.getResource("1.jpg")));
 		image_1.setIconTextGap(10);
 		image_1.setPreferredSize(new Dimension(150, 150));
-		image_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_1.setBorder(null);
 		image_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_1);
 		image_1.addMouseListener(handler);
 		image_1.addMouseMotionListener(handler);
 
 		JLabel image_2 = new JLabel("2");
-		image_2.setBounds(245, 181, 150, 150);
+		image_2.setBounds(196, 20, 150, 150);
 		image_2.setIcon(new ImageIcon(GuiInvoker.class.getResource("2.jpeg")));
 		image_2.setPreferredSize(new Dimension(150, 150));
 		image_2.setIconTextGap(10);
 		image_2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_2.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_2.setBorder(null);
 		image_2.setAlignmentY(0.0f);
 		image_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_2);
@@ -103,9 +111,9 @@ public class GuiInvoker {
 		image_3.setPreferredSize(new Dimension(150, 150));
 		image_3.setIconTextGap(10);
 		image_3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_3.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_3.setBorder(null);
 		image_3.setAlignmentY(0.0f);
-		image_3.setBounds(405, 181, 150, 150);
+		image_3.setBounds(371, 20, 150, 150);
 		image_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_3);
 
@@ -114,9 +122,9 @@ public class GuiInvoker {
 		image_4.setPreferredSize(new Dimension(150, 150));
 		image_4.setIconTextGap(10);
 		image_4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_4.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_4.setBorder(null);
 		image_4.setAlignmentY(0.0f);
-		image_4.setBounds(565, 181, 150, 150);
+		image_4.setBounds(546, 20, 150, 150);
 		image_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_4);
 
@@ -125,9 +133,9 @@ public class GuiInvoker {
 		image_5.setPreferredSize(new Dimension(150, 150));
 		image_5.setIconTextGap(10);
 		image_5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_5.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_5.setBorder(null);
 		image_5.setAlignmentY(0.0f);
-		image_5.setBounds(85, 342, 150, 150);
+		image_5.setBounds(21, 214, 150, 150);
 		image_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_5);
 
@@ -138,7 +146,7 @@ public class GuiInvoker {
 		image_6.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_6.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_6.setAlignmentY(0.0f);
-		image_6.setBounds(245, 342, 150, 150);
+		image_6.setBounds(196, 214, 150, 150);
 		image_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_6);
 
@@ -149,7 +157,7 @@ public class GuiInvoker {
 		image_7.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_7.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_7.setAlignmentY(0.0f);
-		image_7.setBounds(405, 342, 150, 150);
+		image_7.setBounds(356, 214, 150, 150);
 		image_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_7);
 
@@ -160,7 +168,7 @@ public class GuiInvoker {
 		image_8.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_8.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_8.setAlignmentY(0.0f);
-		image_8.setBounds(565, 342, 150, 150);
+		image_8.setBounds(516, 214, 150, 150);
 		image_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_8);
 
@@ -171,7 +179,7 @@ public class GuiInvoker {
 		image_9.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_9.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_9.setAlignmentY(0.0f);
-		image_9.setBounds(85, 503, 150, 150);
+		image_9.setBounds(21, 409, 150, 150);
 		image_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_9);
 
@@ -182,7 +190,7 @@ public class GuiInvoker {
 		image_10.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_10.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_10.setAlignmentY(0.0f);
-		image_10.setBounds(245, 503, 150, 150);
+		image_10.setBounds(181, 409, 150, 150);
 		image_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_10);
 
@@ -193,7 +201,7 @@ public class GuiInvoker {
 		image_11.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_11.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_11.setAlignmentY(0.0f);
-		image_11.setBounds(405, 503, 150, 150);
+		image_11.setBounds(341, 409, 150, 150);
 		image_11.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_11);
 
@@ -204,7 +212,7 @@ public class GuiInvoker {
 		image_12.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_12.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_12.setAlignmentY(0.0f);
-		image_12.setBounds(565, 503, 150, 150);
+		image_12.setBounds(501, 409, 150, 150);
 		image_12.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_12);
 
@@ -215,7 +223,7 @@ public class GuiInvoker {
 		image_13.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_13.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_13.setAlignmentY(0.0f);
-		image_13.setBounds(85, 664, 150, 150);
+		image_13.setBounds(21, 606, 150, 150);
 		image_13.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_13);
 
@@ -226,7 +234,7 @@ public class GuiInvoker {
 		image_14.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_14.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_14.setAlignmentY(0.0f);
-		image_14.setBounds(245, 664, 150, 150);
+		image_14.setBounds(181, 606, 150, 150);
 		image_14.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_14);
 
@@ -237,7 +245,7 @@ public class GuiInvoker {
 		image_15.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_15.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_15.setAlignmentY(0.0f);
-		image_15.setBounds(405, 664, 150, 150);
+		image_15.setBounds(341, 606, 150, 150);
 		image_15.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_15);
 
@@ -248,76 +256,22 @@ public class GuiInvoker {
 		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_16.setBorder(new LineBorder(new Color(0, 0, 0), 3));
 		image_16.setAlignmentY(0.0f);
-		image_16.setBounds(565, 664, 150, 150);
+		image_16.setBounds(516, 606, 150, 150);
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-		JLabel Status_1 = new JLabel("Image 1");
-		Status_1.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("state_active.png")));
-		Status_1.setPreferredSize(new Dimension(75, 75));
-		Status_1.setMinimumSize(new Dimension(0, 0));
-		Status_1.setMaximumSize(new Dimension(0, 0));
-		Status_1.setIconTextGap(10);
-		Status_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		Status_1.setBorder(null);
-		Status_1.setAlignmentY(0.0f);
-		Status_1.setBounds(85, 30, 80, 80);
-		frmClusteredImageRetrieval.getContentPane().add(Status_1);
+		JLabel label = new JLabel("16");
+		label.setIcon(new ImageIcon(
+				"/Users/Robert/Documents/workspace/maven.1387453149530/ir-project/src/main/resources/ir_project/gui/gui.png"));
+		label.setPreferredSize(new Dimension(150, 150));
+		label.setIconTextGap(10);
+		label.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		label.setBorder(null);
+		label.setAlignmentY(0.0f);
+		label.setBounds(0, 0, 1280, 800);
+		frmClusteredImageRetrieval.getContentPane().add(label);
 
-		JLabel Status_2 = new JLabel("Image 1");
-		Status_2.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("state_normal.png")));
-		Status_2.setPreferredSize(new Dimension(75, 75));
-		Status_2.setMinimumSize(new Dimension(0, 0));
-		Status_2.setMaximumSize(new Dimension(0, 0));
-		Status_2.setIconTextGap(10);
-		Status_2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		Status_2.setBorder(null);
-		Status_2.setAlignmentY(0.0f);
-		Status_2.setBounds(220, 30, 80, 80);
-		frmClusteredImageRetrieval.getContentPane().add(Status_2);
-
-		JLabel Status_3 = new JLabel("Image 1");
-		Status_3.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("state_normal.png")));
-		Status_3.setPreferredSize(new Dimension(75, 75));
-		Status_3.setMinimumSize(new Dimension(0, 0));
-		Status_3.setMaximumSize(new Dimension(0, 0));
-		Status_3.setIconTextGap(10);
-		Status_3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		Status_3.setBorder(null);
-		Status_3.setAlignmentY(0.0f);
-		Status_3.setBounds(360, 30, 80, 80);
-		frmClusteredImageRetrieval.getContentPane().add(Status_3);
-
-		JLabel Status_4 = new JLabel("Image 1");
-		Status_4.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("state_normal.png")));
-		Status_4.setPreferredSize(new Dimension(75, 75));
-		Status_4.setMinimumSize(new Dimension(0, 0));
-		Status_4.setMaximumSize(new Dimension(0, 0));
-		Status_4.setIconTextGap(10);
-		Status_4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		Status_4.setBorder(null);
-		Status_4.setAlignmentY(0.0f);
-		Status_4.setBounds(506, 30, 80, 80);
-		frmClusteredImageRetrieval.getContentPane().add(Status_4);
-
-		JLabel Status_5 = new JLabel("Image 1");
-		Status_5.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("state_normal.png")));
-		Status_5.setPreferredSize(new Dimension(75, 75));
-		Status_5.setMinimumSize(new Dimension(0, 0));
-		Status_5.setMaximumSize(new Dimension(0, 0));
-		Status_5.setIconTextGap(10);
-		Status_5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		Status_5.setBorder(null);
-		Status_5.setAlignmentY(0.0f);
-		Status_5.setBounds(635, 30, 80, 80);
-		frmClusteredImageRetrieval.getContentPane().add(Status_5);
-
-		frmClusteredImageRetrieval.setBounds(100, 100, 1280, 700);
+		frmClusteredImageRetrieval.setBounds(100, 100, 1280, 822);
 		frmClusteredImageRetrieval
 				.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// frame.setExtendedState(frame.getExtendedState() |
