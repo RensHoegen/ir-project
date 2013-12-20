@@ -56,7 +56,7 @@ public class GuiInvoker {
 	private void initialize() {
 		frmClusteredImageRetrieval = new JFrame();
 		frmClusteredImageRetrieval.getContentPane().setBackground(
-				new Color(96, 98, 98));
+				new Color(96, 97, 98));
 		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
 				ComponentOrientation.LEFT_TO_RIGHT);
 		frmClusteredImageRetrieval
