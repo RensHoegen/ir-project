@@ -5,22 +5,21 @@ import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
 
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.EventQueue;
-
+import java.awt.GraphicsConfiguration;
 import java.awt.SystemColor;
 import java.awt.Cursor;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 public class GuiInvoker {
 
@@ -56,6 +55,8 @@ public class GuiInvoker {
 	 */
 	private void initialize() {
 		frmClusteredImageRetrieval = new JFrame();
+		frmClusteredImageRetrieval.getContentPane().setBackground(
+				new Color(96, 97, 98));
 		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
 				ComponentOrientation.LEFT_TO_RIGHT);
 		frmClusteredImageRetrieval
@@ -135,7 +136,7 @@ public class GuiInvoker {
 		image_5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_5.setBorder(null);
 		image_5.setAlignmentY(0.0f);
-		image_5.setBounds(21, 214, 150, 150);
+		image_5.setBounds(21, 215, 150, 150);
 		image_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_5);
 
@@ -144,9 +145,9 @@ public class GuiInvoker {
 		image_6.setPreferredSize(new Dimension(150, 150));
 		image_6.setIconTextGap(10);
 		image_6.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_6.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_6.setBorder(null);
 		image_6.setAlignmentY(0.0f);
-		image_6.setBounds(196, 214, 150, 150);
+		image_6.setBounds(196, 215, 150, 150);
 		image_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_6);
 
@@ -155,9 +156,9 @@ public class GuiInvoker {
 		image_7.setPreferredSize(new Dimension(150, 150));
 		image_7.setIconTextGap(10);
 		image_7.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_7.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_7.setBorder(null);
 		image_7.setAlignmentY(0.0f);
-		image_7.setBounds(356, 214, 150, 150);
+		image_7.setBounds(371, 215, 150, 150);
 		image_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_7);
 
@@ -166,9 +167,9 @@ public class GuiInvoker {
 		image_8.setPreferredSize(new Dimension(150, 150));
 		image_8.setIconTextGap(10);
 		image_8.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_8.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_8.setBorder(null);
 		image_8.setAlignmentY(0.0f);
-		image_8.setBounds(516, 214, 150, 150);
+		image_8.setBounds(546, 215, 150, 150);
 		image_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_8);
 
@@ -177,9 +178,9 @@ public class GuiInvoker {
 		image_9.setPreferredSize(new Dimension(150, 150));
 		image_9.setIconTextGap(10);
 		image_9.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_9.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_9.setBorder(null);
 		image_9.setAlignmentY(0.0f);
-		image_9.setBounds(21, 409, 150, 150);
+		image_9.setBounds(21, 411, 150, 150);
 		image_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_9);
 
@@ -188,9 +189,9 @@ public class GuiInvoker {
 		image_10.setPreferredSize(new Dimension(150, 150));
 		image_10.setIconTextGap(10);
 		image_10.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_10.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_10.setBorder(null);
 		image_10.setAlignmentY(0.0f);
-		image_10.setBounds(181, 409, 150, 150);
+		image_10.setBounds(196, 411, 150, 150);
 		image_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_10);
 
@@ -199,9 +200,9 @@ public class GuiInvoker {
 		image_11.setPreferredSize(new Dimension(150, 150));
 		image_11.setIconTextGap(10);
 		image_11.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_11.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_11.setBorder(null);
 		image_11.setAlignmentY(0.0f);
-		image_11.setBounds(341, 409, 150, 150);
+		image_11.setBounds(371, 411, 150, 150);
 		image_11.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_11);
 
@@ -210,9 +211,9 @@ public class GuiInvoker {
 		image_12.setPreferredSize(new Dimension(150, 150));
 		image_12.setIconTextGap(10);
 		image_12.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_12.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_12.setBorder(null);
 		image_12.setAlignmentY(0.0f);
-		image_12.setBounds(501, 409, 150, 150);
+		image_12.setBounds(546, 411, 150, 150);
 		image_12.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_12);
 
@@ -221,9 +222,9 @@ public class GuiInvoker {
 		image_13.setPreferredSize(new Dimension(150, 150));
 		image_13.setIconTextGap(10);
 		image_13.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_13.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_13.setBorder(null);
 		image_13.setAlignmentY(0.0f);
-		image_13.setBounds(21, 606, 150, 150);
+		image_13.setBounds(21, 607, 150, 150);
 		image_13.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_13);
 
@@ -232,9 +233,9 @@ public class GuiInvoker {
 		image_14.setPreferredSize(new Dimension(150, 150));
 		image_14.setIconTextGap(10);
 		image_14.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_14.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_14.setBorder(null);
 		image_14.setAlignmentY(0.0f);
-		image_14.setBounds(181, 606, 150, 150);
+		image_14.setBounds(196, 607, 150, 150);
 		image_14.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_14);
 
@@ -243,9 +244,9 @@ public class GuiInvoker {
 		image_15.setPreferredSize(new Dimension(150, 150));
 		image_15.setIconTextGap(10);
 		image_15.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_15.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_15.setBorder(null);
 		image_15.setAlignmentY(0.0f);
-		image_15.setBounds(341, 606, 150, 150);
+		image_15.setBounds(371, 607, 150, 150);
 		image_15.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_15);
 
@@ -254,26 +255,46 @@ public class GuiInvoker {
 		image_16.setPreferredSize(new Dimension(150, 150));
 		image_16.setIconTextGap(10);
 		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_16.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		image_16.setBorder(null);
 		image_16.setAlignmentY(0.0f);
-		image_16.setBounds(516, 606, 150, 150);
+		image_16.setBounds(546, 607, 150, 150);
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-		JLabel label = new JLabel("16");
-		label.setIcon(new ImageIcon(
-				"/Users/Robert/Documents/workspace/maven.1387453149530/ir-project/src/main/resources/ir_project/gui/gui.png"));
-		label.setPreferredSize(new Dimension(150, 150));
-		label.setIconTextGap(10);
-		label.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		label.setBorder(null);
-		label.setAlignmentY(0.0f);
-		label.setBounds(0, 0, 1280, 800);
-		frmClusteredImageRetrieval.getContentPane().add(label);
+		JLabel background = new JLabel("16");
+		background.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("gui.png")));
+		background.setPreferredSize(new Dimension(150, 150));
+		background.setIconTextGap(10);
+		background.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		background.setBorder(null);
+		background.setAlignmentY(0.0f);
+		background.setBounds(0, 0, 1280, 800);
+		frmClusteredImageRetrieval.getContentPane().add(background);
 
-		frmClusteredImageRetrieval.setBounds(100, 100, 1280, 822);
+		// frmClusteredImageRetrieval.setBounds(100, 100, 1280, 822);
 		frmClusteredImageRetrieval
 				.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		final GraphicsConfiguration config = frmClusteredImageRetrieval
+				.getGraphicsConfiguration();
+
+		final int left = Toolkit.getDefaultToolkit().getScreenInsets(config).left;
+		final int right = Toolkit.getDefaultToolkit().getScreenInsets(config).right;
+		final int top = Toolkit.getDefaultToolkit().getScreenInsets(config).top;
+		final int bottom = Toolkit.getDefaultToolkit().getScreenInsets(config).bottom;
+
+		final Dimension screenSize = Toolkit.getDefaultToolkit()
+				.getScreenSize();
+		final int width = screenSize.width - left - right;
+		final int height = screenSize.height - top - bottom;
+
+		frmClusteredImageRetrieval.setResizable(false);
+		frmClusteredImageRetrieval.setSize(width, height);
+		frmClusteredImageRetrieval
+				.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmClusteredImageRetrieval.setVisible(true);
+
 		// frame.setExtendedState(frame.getExtendedState() |
 		// Frame.MAXIMIZED_BOTH);
 	}
