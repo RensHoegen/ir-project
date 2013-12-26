@@ -11,27 +11,22 @@ import java.util.Comparator;
 public class ListDistancesInvoker {
 	private final static int REFERENCE_IMAGE_ID = 645;
 
-	public static void main(String[] args) throws IOException,
-			ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		System.out.println("Loading...");
-		ImageSummaryReference imageReference = ImageSummaryReference
-				.loadImageSummary();
+		ImageSummaryReference imageReference = ImageSummaryReference.loadImageSummary();
 
-		ImageSummary referenceImage = imageReference
-				.getImageSummary(REFERENCE_IMAGE_ID - 1);
+		ImageSummary referenceImage = imageReference.getImageSummary(REFERENCE_IMAGE_ID - 1);
 
 		showMatchesForReference(imageReference, referenceImage);
 	}
 
-	public static void showMatchesForReference(
-			ImageSummaryReference imageReference, ImageSummary referenceImage) {
+	public static void showMatchesForReference(ImageSummaryReference imageReference, ImageSummary referenceImage) {
 		System.out.println("Calculating distances...");
 		Integer[] imageIds = new Integer[imageReference.size()];
 		final double[] distances = new double[imageReference.size()];
 		for (int i = 0; i < imageIds.length; i++) {
 			imageIds[i] = i;
-			distances[i] = referenceImage.distanceTo(imageReference
-					.getImageSummary(i));
+			distances[i] = referenceImage.distanceTo(imageReference.getImageSummary(i));
 		}
 
 		System.out.println("Sorting...");
