@@ -14,12 +14,22 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 public class ImageSummaryExtractor {
-	private static final int NUMBER_OF_AREAS = 2;
+	private static final int NUMBER_OF_AREAS = 1;
 	private static final Color[] COLORS = createReferenceColors();
 
 	public static ImageSummary extractImageSummary(InputStream imageStream) throws IOException {
 		BufferedImage image = ImageIO.read(imageStream);
 		return extractImageSummaryInternal(image);
+	}
+
+	public static ImageSummary createImageSummaryFromColor(Color... colors) {
+		double[] histogram = new double[COLORS.length];
+		for (Color color : colors) {
+			addPixelToHistogram(histogram, color);
+		}
+
+		normalizeHistogram(histogram);
+		return new ImageSummary(new ImageAreaSummary[] { new ImageAreaSummary(histogram) });
 	}
 
 	private static Color[] createReferenceColors() {
@@ -65,6 +75,12 @@ public class ImageSummaryExtractor {
 			}
 		}
 
+		normalizeHistogram(histogram);
+
+		return new ImageAreaSummary(histogram);
+	}
+
+	private static void normalizeHistogram(double[] histogram) {
 		double histogramSum = 0.0d;
 		for (int i = 0; i < histogram.length; i++) {
 			histogramSum += histogram[i];
@@ -72,8 +88,6 @@ public class ImageSummaryExtractor {
 		for (int i = 0; i < histogram.length; i++) {
 			histogram[i] /= histogramSum;
 		}
-
-		return new ImageAreaSummary(histogram);
 	}
 
 	private static void addPixelToHistogram(double[] histogram, Color pixelColor) {
