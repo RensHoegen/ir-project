@@ -1,6 +1,7 @@
 package ir_project.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 public class ImageSummary implements Serializable {
 	private static final long serialVersionUID = -2210229095092885503L;
@@ -17,7 +18,8 @@ public class ImageSummary implements Serializable {
 		public double distanceTo(ImageAreaSummary other) {
 			double distanceSum = 0.0d;
 			for (int i = 0; i < 8; i++) {
-				distanceSum += Math.pow(histogram[i] - other.histogram[i], 2) / (histogram[i] + other.histogram[i] + 1.0e-16);
+				distanceSum += Math.pow(histogram[i] - other.histogram[i], 2)
+						/ (histogram[i] + other.histogram[i] + 1.0e-16);
 			}
 			return distanceSum;
 		}
@@ -37,9 +39,32 @@ public class ImageSummary implements Serializable {
 	public double distanceTo(ImageSummary other) {
 		double distanceSum = 0.0d;
 		for (int i = 0; i < areaSummaries.length; i++) {
-			double distance = areaSummaries[i].distanceTo(other.areaSummaries[i]);
+			double distance = areaSummaries[i]
+					.distanceTo(other.areaSummaries[i]);
 			distanceSum += distance * distance;
 		}
 		return distanceSum;
+	}
+
+	public static ImageSummary calculateAverageSummary(
+			Collection<ImageSummary> collection) {
+		ImageSummary first = collection.iterator().next();
+		double[][] averageHistograms = new double[first.areaSummaries.length][];
+		for (int i = 0; i < averageHistograms.length; i++) {
+			averageHistograms[i] = new double[first.areaSummaries[i].histogram.length];
+		}
+		for (ImageSummary summary : collection) {
+			for (int i = 0; i < averageHistograms.length; i++) {
+				for (int j = 0; j < averageHistograms[i].length; j++) {
+					averageHistograms[i][j] += summary.areaSummaries[i].histogram[j]
+							/ collection.size();
+				}
+			}
+		}
+		ImageAreaSummary[] areaSummaries = new ImageAreaSummary[averageHistograms.length];
+		for (int i = 0; i < areaSummaries.length; i++) {
+			areaSummaries[i] = new ImageAreaSummary(averageHistograms[i]);
+		}
+		return new ImageSummary(areaSummaries);
 	}
 }
