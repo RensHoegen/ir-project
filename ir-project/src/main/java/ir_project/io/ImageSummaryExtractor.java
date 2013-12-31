@@ -94,7 +94,7 @@ public class ImageSummaryExtractor {
 		double[] weightPerColor = new double[COLORS.length];
 		double weightSum = 0.0d;
 		for (int i = 0; i < COLORS.length; i++) {
-			double distance = calculateDistanceBetweenColors(COLORS[i], pixelColor);
+			double distance = calculateDistanceBetweenColors(COLORS[i], pixelColor) + 1.0e-4;
 			double weight = 1 / distance / distance;
 			weightPerColor[i] = weight;
 			weightSum += weight;

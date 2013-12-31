@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class ListDistancesInvoker {
-	private final static int REFERENCE_IMAGE_ID = 645;
+	private final static int REFERENCE_IMAGE_ID = 789;
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		System.out.println("Loading...");
