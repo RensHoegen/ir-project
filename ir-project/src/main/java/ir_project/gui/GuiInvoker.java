@@ -11,15 +11,18 @@ import javax.swing.ImageIcon;
 
 import java.awt.Component;
 import java.awt.ComponentOrientation;
+import java.awt.Container;
 import java.awt.EventQueue;
-import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
 import java.awt.Cursor;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.Toolkit;
 import java.awt.Color;
+
+import javax.swing.JButton;
 
 public class GuiInvoker {
 
@@ -59,12 +62,6 @@ public class GuiInvoker {
 				new Color(96, 97, 98));
 		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
 				ComponentOrientation.LEFT_TO_RIGHT);
-		frmClusteredImageRetrieval
-				.setIconImage(Toolkit
-						.getDefaultToolkit()
-						.getImage(
-								"/Users/Robert/Documents/workspace/maven.1387453149530/ir-project/src/main/resources/ir_project/gui/gui.png"));
-
 		frmClusteredImageRetrieval.setTitle("Clustered Image Retrieval System");
 		frmClusteredImageRetrieval.getContentPane().setCursor(
 				Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -72,7 +69,19 @@ public class GuiInvoker {
 		frmClusteredImageRetrieval.setBackground(SystemColor.activeCaption);
 		frmClusteredImageRetrieval.getContentPane().setFont(
 				new Font("Century Gothic", Font.PLAIN, 16));
+
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
+
+		Handlerclass2 handler2 = new Handlerclass2();
+		JButton btnQuit = new JButton("");
+		btnQuit.setIcon(new ImageIcon(GuiInvoker.class.getResource("quit.png")));
+		btnQuit.setBounds(1224, 6, 50, 50);
+		btnQuit.setBorderPainted(false);
+		btnQuit.setContentAreaFilled(false);
+		btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		frmClusteredImageRetrieval.getContentPane().add(btnQuit);
+		btnQuit.addMouseListener(handler2);
+		btnQuit.addMouseMotionListener(handler2);
 
 		statusbar = new JLabel("image_1 status");
 		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -83,7 +92,7 @@ public class GuiInvoker {
 
 		Handlerclass handler = new Handlerclass();
 
-		JLabel image_1 = new JLabel("1");
+		JButton image_1 = new JButton("1");
 		image_1.setBounds(21, 20, 150, 150);
 		image_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		image_1.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -93,10 +102,8 @@ public class GuiInvoker {
 		image_1.setBorder(null);
 		image_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_1);
-		image_1.addMouseListener(handler);
-		image_1.addMouseMotionListener(handler);
 
-		JLabel image_2 = new JLabel("2");
+		JButton image_2 = new JButton("2");
 		image_2.setBounds(196, 20, 150, 150);
 		image_2.setIcon(new ImageIcon(GuiInvoker.class.getResource("2.jpeg")));
 		image_2.setPreferredSize(new Dimension(150, 150));
@@ -107,7 +114,7 @@ public class GuiInvoker {
 		image_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_2);
 
-		JLabel image_3 = new JLabel("3");
+		JButton image_3 = new JButton("3");
 		image_3.setIcon(new ImageIcon(GuiInvoker.class.getResource("3.jpg")));
 		image_3.setPreferredSize(new Dimension(150, 150));
 		image_3.setIconTextGap(10);
@@ -118,7 +125,7 @@ public class GuiInvoker {
 		image_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_3);
 
-		JLabel image_4 = new JLabel("4");
+		JButton image_4 = new JButton("4");
 		image_4.setIcon(new ImageIcon(GuiInvoker.class.getResource("4.jpg")));
 		image_4.setPreferredSize(new Dimension(150, 150));
 		image_4.setIconTextGap(10);
@@ -129,7 +136,7 @@ public class GuiInvoker {
 		image_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_4);
 
-		JLabel image_5 = new JLabel("5");
+		JButton image_5 = new JButton("5");
 		image_5.setIcon(new ImageIcon(GuiInvoker.class.getResource("5.jpeg")));
 		image_5.setPreferredSize(new Dimension(150, 150));
 		image_5.setIconTextGap(10);
@@ -140,7 +147,7 @@ public class GuiInvoker {
 		image_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_5);
 
-		JLabel image_6 = new JLabel("6");
+		JButton image_6 = new JButton("6");
 		image_6.setIcon(new ImageIcon(GuiInvoker.class.getResource("6.jpg")));
 		image_6.setPreferredSize(new Dimension(150, 150));
 		image_6.setIconTextGap(10);
@@ -151,7 +158,7 @@ public class GuiInvoker {
 		image_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_6);
 
-		JLabel image_7 = new JLabel("7");
+		JButton image_7 = new JButton("7");
 		image_7.setIcon(new ImageIcon(GuiInvoker.class.getResource("7.jpeg")));
 		image_7.setPreferredSize(new Dimension(150, 150));
 		image_7.setIconTextGap(10);
@@ -162,7 +169,7 @@ public class GuiInvoker {
 		image_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_7);
 
-		JLabel image_8 = new JLabel("8");
+		JButton image_8 = new JButton("8");
 		image_8.setIcon(new ImageIcon(GuiInvoker.class.getResource("8.jpg")));
 		image_8.setPreferredSize(new Dimension(150, 150));
 		image_8.setIconTextGap(10);
@@ -173,7 +180,7 @@ public class GuiInvoker {
 		image_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_8);
 
-		JLabel image_9 = new JLabel("9");
+		JButton image_9 = new JButton("9");
 		image_9.setIcon(new ImageIcon(GuiInvoker.class.getResource("9.jpg")));
 		image_9.setPreferredSize(new Dimension(150, 150));
 		image_9.setIconTextGap(10);
@@ -184,7 +191,7 @@ public class GuiInvoker {
 		image_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_9);
 
-		JLabel image_10 = new JLabel("10");
+		JButton image_10 = new JButton("10");
 		image_10.setIcon(new ImageIcon(GuiInvoker.class.getResource("10.jpeg")));
 		image_10.setPreferredSize(new Dimension(150, 150));
 		image_10.setIconTextGap(10);
@@ -195,7 +202,7 @@ public class GuiInvoker {
 		image_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_10);
 
-		JLabel image_11 = new JLabel("11");
+		JButton image_11 = new JButton("11");
 		image_11.setIcon(new ImageIcon(GuiInvoker.class.getResource("11.jpeg")));
 		image_11.setPreferredSize(new Dimension(150, 150));
 		image_11.setIconTextGap(10);
@@ -206,7 +213,7 @@ public class GuiInvoker {
 		image_11.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_11);
 
-		JLabel image_12 = new JLabel("12");
+		JButton image_12 = new JButton("12");
 		image_12.setIcon(new ImageIcon(GuiInvoker.class.getResource("12.jpeg")));
 		image_12.setPreferredSize(new Dimension(150, 150));
 		image_12.setIconTextGap(10);
@@ -217,7 +224,7 @@ public class GuiInvoker {
 		image_12.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_12);
 
-		JLabel image_13 = new JLabel("13");
+		JButton image_13 = new JButton("13");
 		image_13.setIcon(new ImageIcon(GuiInvoker.class.getResource("13.jpeg")));
 		image_13.setPreferredSize(new Dimension(150, 150));
 		image_13.setIconTextGap(10);
@@ -228,7 +235,7 @@ public class GuiInvoker {
 		image_13.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_13);
 
-		JLabel image_14 = new JLabel("14");
+		JButton image_14 = new JButton("14");
 		image_14.setIcon(new ImageIcon(GuiInvoker.class.getResource("14.jpeg")));
 		image_14.setPreferredSize(new Dimension(150, 150));
 		image_14.setIconTextGap(10);
@@ -239,7 +246,7 @@ public class GuiInvoker {
 		image_14.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_14);
 
-		JLabel image_15 = new JLabel("15");
+		JButton image_15 = new JButton("15");
 		image_15.setIcon(new ImageIcon(GuiInvoker.class.getResource("15.jpg")));
 		image_15.setPreferredSize(new Dimension(150, 150));
 		image_15.setIconTextGap(10);
@@ -250,8 +257,19 @@ public class GuiInvoker {
 		image_15.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_15);
 
-		JLabel image_16 = new JLabel("16");
+		JButton image_16 = new JButton("16");
 		image_16.setIcon(new ImageIcon(GuiInvoker.class.getResource("16.jpg")));
+		image_16.setPreferredSize(new Dimension(150, 150));
+		image_16.setIconTextGap(10);
+		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		image_16.setBorder(null);
+		image_16.setAlignmentY(0.0f);
+		image_16.setBounds(546, 607, 150, 150);
+		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		frmClusteredImageRetrieval.getContentPane().add(image_16);
+		
+		JLabel search_image = new JLabel("search image");
+		image_16.setIcon(new ImageIcon(GuiInvoker.class.getResource("search.jpg")));
 		image_16.setPreferredSize(new Dimension(150, 150));
 		image_16.setIconTextGap(10);
 		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -270,33 +288,36 @@ public class GuiInvoker {
 		background.setBorder(null);
 		background.setAlignmentY(0.0f);
 		background.setBounds(0, 0, 1280, 800);
-		frmClusteredImageRetrieval.getContentPane().add(background);
 
-		// frmClusteredImageRetrieval.setBounds(100, 100, 1280, 822);
+		frmClusteredImageRetrieval.getContentPane().add(background);
+		background.addMouseListener(handler);
+		background.addMouseMotionListener(handler);
+
+		frmClusteredImageRetrieval.setUndecorated(true);
+
+		frmClusteredImageRetrieval.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval
 				.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		final GraphicsConfiguration config = frmClusteredImageRetrieval
-				.getGraphicsConfiguration();
+		GraphicsDevice device = GraphicsEnvironment
+				.getLocalGraphicsEnvironment().getScreenDevices()[0];
+		device.setFullScreenWindow(frmClusteredImageRetrieval);
 
-		final int left = Toolkit.getDefaultToolkit().getScreenInsets(config).left;
-		final int right = Toolkit.getDefaultToolkit().getScreenInsets(config).right;
-		final int top = Toolkit.getDefaultToolkit().getScreenInsets(config).top;
-		final int bottom = Toolkit.getDefaultToolkit().getScreenInsets(config).bottom;
+		// frmClusteredImageRetrieval.setExtendedState(frmClusteredImageRetrieval
+		// .getExtendedState() | Frame.MAXIMIZED_BOTH);
 
-		final Dimension screenSize = Toolkit.getDefaultToolkit()
-				.getScreenSize();
-		final int width = screenSize.width - left - right;
-		final int height = screenSize.height - top - bottom;
+		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
+		// frmClusteredImageRetrieval.pack();
 
 		frmClusteredImageRetrieval.setResizable(false);
-		frmClusteredImageRetrieval.setSize(width, height);
-		frmClusteredImageRetrieval
-				.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmClusteredImageRetrieval.setVisible(true);
+		// frmClusteredImageRetrieval.setSize(width, height);
 
-		// frame.setExtendedState(frame.getExtendedState() |
-		// Frame.MAXIMIZED_BOTH);
+		frmClusteredImageRetrieval.setVisible(true);
+	}
+
+	private void addComponentsToPane(Container contentPane) {
+		// TODO Auto-generated method stub
+
 	}
 
 	private class Handlerclass implements MouseListener, MouseMotionListener {
@@ -332,4 +353,36 @@ public class GuiInvoker {
 		}
 
 	}
+
+	private class Handlerclass2 implements MouseListener, MouseMotionListener {
+		public void mouseClicked(MouseEvent event) {
+
+		}
+
+		public void mousePressed(MouseEvent event) {
+
+		}
+
+		public void mouseReleased(MouseEvent event) {
+			System.exit(0);
+		}
+
+		public void mouseEntered(MouseEvent event) {
+
+		}
+
+		public void mouseExited(MouseEvent event) {
+
+		}
+
+		public void mouseDragged(MouseEvent event) {
+
+		}
+
+		public void mouseMoved(MouseEvent event) {
+
+		}
+
+	}
+
 }
