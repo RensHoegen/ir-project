@@ -86,7 +86,7 @@ public class GuiInvoker {
 		statusbar = new JLabel("image_1 status");
 		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		statusbar.setBounds(886, 355, 312, 54);
+		statusbar.setBounds(1079, 381, 174, 54);
 		statusbar.setPreferredSize(new Dimension(150, 150));
 		frmClusteredImageRetrieval.getContentPane().add(statusbar);
 
@@ -267,17 +267,18 @@ public class GuiInvoker {
 		image_16.setBounds(546, 607, 150, 150);
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
-		
+
 		JLabel search_image = new JLabel("search image");
-		image_16.setIcon(new ImageIcon(GuiInvoker.class.getResource("search.jpg")));
-		image_16.setPreferredSize(new Dimension(150, 150));
-		image_16.setIconTextGap(10);
-		image_16.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		image_16.setBorder(null);
-		image_16.setAlignmentY(0.0f);
-		image_16.setBounds(546, 607, 150, 150);
-		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_16);
+		search_image.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("search_image.png")));
+		search_image.setPreferredSize(new Dimension(307, 309));
+		search_image.setIconTextGap(10);
+		search_image
+				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		search_image.setBorder(null);
+		search_image.setAlignmentY(0.0f);
+		search_image.setBounds(846, 42, 307, 309);
+		frmClusteredImageRetrieval.getContentPane().add(search_image);
 
 		JLabel background = new JLabel("16");
 		background.setIcon(new ImageIcon(GuiInvoker.class
