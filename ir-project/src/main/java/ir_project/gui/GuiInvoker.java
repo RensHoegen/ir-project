@@ -23,6 +23,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class GuiInvoker {
 
@@ -75,6 +76,8 @@ public class GuiInvoker {
 		Handlerclass2 handler2 = new Handlerclass2();
 		JButton btnQuit = new JButton("");
 		btnQuit.setIcon(new ImageIcon(GuiInvoker.class.getResource("quit.png")));
+		btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("quit_over.png")));
 		btnQuit.setBounds(1224, 6, 50, 50);
 		btnQuit.setBorderPainted(false);
 		btnQuit.setContentAreaFilled(false);
@@ -83,11 +86,13 @@ public class GuiInvoker {
 		btnQuit.addMouseListener(handler2);
 		btnQuit.addMouseMotionListener(handler2);
 
-		statusbar = new JLabel("image_1 status");
+		statusbar = new JLabel("");
+		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
 		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		statusbar.setBounds(1079, 381, 174, 54);
+		statusbar.setBounds(845, 358, 308, 45);
 		statusbar.setPreferredSize(new Dimension(150, 150));
+		statusbar.setText("Find this image!");
 		frmClusteredImageRetrieval.getContentPane().add(statusbar);
 
 		Handlerclass handler = new Handlerclass();
@@ -271,14 +276,105 @@ public class GuiInvoker {
 		JLabel search_image = new JLabel("search image");
 		search_image.setIcon(new ImageIcon(GuiInvoker.class
 				.getResource("search_image.png")));
-		search_image.setPreferredSize(new Dimension(307, 309));
+		search_image.setPreferredSize(new Dimension(308, 309));
 		search_image.setIconTextGap(10);
 		search_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		search_image.setBorder(null);
 		search_image.setAlignmentY(0.0f);
-		search_image.setBounds(846, 42, 307, 309);
+		search_image.setBounds(845, 42, 308, 309);
 		frmClusteredImageRetrieval.getContentPane().add(search_image);
+
+		Handlerclass3 cluster1_handler = new Handlerclass3();
+
+		JButton cluster1 = new JButton("");
+		cluster1.setHorizontalAlignment(SwingConstants.LEFT);
+		cluster1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		cluster1.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster1_normal.png")));
+		cluster1.setPreferredSize(new Dimension(557, 66));
+		cluster1.setIconTextGap(10);
+		cluster1.setBorder(null);
+		cluster1.setAlignmentY(0.0f);
+		cluster1.setBounds(723, 433, 557, 66);
+		cluster1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		cluster1.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster1_over.png")));
+		cluster1.setPressedIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster1_over.png")));
+
+		JButton cluster2 = new JButton("");
+		cluster2.setHorizontalAlignment(SwingConstants.LEFT);
+		cluster2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		cluster2.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster2_normal.png")));
+		cluster2.setPreferredSize(new Dimension(557, 66));
+		cluster2.setIconTextGap(10);
+		cluster2.setBorder(null);
+		cluster2.setAlignmentY(0.0f);
+		cluster2.setBounds(723, 499, 557, 66);
+		cluster2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		cluster2.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster2_over.png")));
+		cluster2.setPressedIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster2_over.png")));
+
+		JButton cluster3 = new JButton("");
+		cluster3.setHorizontalAlignment(SwingConstants.LEFT);
+		cluster3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		cluster3.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster3_normal.png")));
+		cluster3.setPreferredSize(new Dimension(557, 66));
+		cluster3.setIconTextGap(10);
+		cluster3.setBorder(null);
+		cluster3.setAlignmentY(0.0f);
+		cluster3.setBounds(723, 565, 557, 66);
+		cluster3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		cluster3.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster3_over.png")));
+		cluster3.setPressedIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster3_over.png")));
+
+		JButton cluster4 = new JButton("");
+		cluster4.setHorizontalAlignment(SwingConstants.LEFT);
+		cluster4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		cluster4.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster4_normal.png")));
+		cluster4.setPreferredSize(new Dimension(557, 66));
+		cluster4.setIconTextGap(10);
+		cluster4.setBorder(null);
+		cluster4.setAlignmentY(0.0f);
+		cluster4.setBounds(723, 631, 557, 66);
+		cluster4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		cluster4.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster4_over.png")));
+		cluster4.setPressedIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster4_over.png")));
+
+		JButton cluster5 = new JButton("");
+		cluster5.setHorizontalAlignment(SwingConstants.LEFT);
+		cluster5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		cluster5.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster5_normal.png")));
+		cluster5.setPreferredSize(new Dimension(557, 66));
+		cluster5.setIconTextGap(10);
+		cluster5.setBorder(null);
+		cluster5.setAlignmentY(0.0f);
+		cluster5.setBounds(723, 697, 557, 66);
+		cluster5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		cluster5.setRolloverIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster5_over.png")));
+		cluster5.setPressedIcon(new ImageIcon(GuiInvoker.class
+				.getResource("cluster5_over.png")));
+
+		frmClusteredImageRetrieval.getContentPane().add(cluster1);
+		frmClusteredImageRetrieval.getContentPane().add(cluster2);
+		frmClusteredImageRetrieval.getContentPane().add(cluster3);
+		frmClusteredImageRetrieval.getContentPane().add(cluster4);
+		frmClusteredImageRetrieval.getContentPane().add(cluster5);
+
+		cluster1.addMouseListener(cluster1_handler);
+		cluster1.addMouseMotionListener(cluster1_handler);
 
 		JLabel background = new JLabel("16");
 		background.setIcon(new ImageIcon(GuiInvoker.class
@@ -323,33 +419,33 @@ public class GuiInvoker {
 
 	private class Handlerclass implements MouseListener, MouseMotionListener {
 		public void mouseClicked(MouseEvent event) {
-			statusbar.setText(String.format("Clicked at %d,%d", event.getX(),
-					event.getY()));
+			// statusbar.setText(String.format("Clicked at %d,%d",
+			// event.getX(),event.getY()));
 		}
 
 		public void mousePressed(MouseEvent event) {
-			statusbar.setText("Pressed");
+			// statusbar.setText("Pressed");
 		}
 
 		public void mouseReleased(MouseEvent event) {
-			statusbar.setText("Released");
+			// statusbar.setText("Released");
 		}
 
 		public void mouseEntered(MouseEvent event) {
-			statusbar.setText("Entered");
+			// statusbar.setText("Entered");
 		}
 
 		public void mouseExited(MouseEvent event) {
-			statusbar.setText("Exited");
+			// statusbar.setText("Exited");
 		}
 
 		public void mouseDragged(MouseEvent event) {
-			statusbar.setText("Dragged");
+			// statusbar.setText("Dragged");
 
 		}
 
 		public void mouseMoved(MouseEvent event) {
-			statusbar.setText("Moved");
+			// statusbar.setText("Moved");
 
 		}
 
@@ -366,6 +462,37 @@ public class GuiInvoker {
 
 		public void mouseReleased(MouseEvent event) {
 			System.exit(0);
+		}
+
+		public void mouseEntered(MouseEvent event) {
+
+		}
+
+		public void mouseExited(MouseEvent event) {
+
+		}
+
+		public void mouseDragged(MouseEvent event) {
+
+		}
+
+		public void mouseMoved(MouseEvent event) {
+
+		}
+
+	}
+
+	private class Handlerclass3 implements MouseListener, MouseMotionListener {
+		public void mouseClicked(MouseEvent event) {
+
+		}
+
+		public void mousePressed(MouseEvent event) {
+
+		}
+
+		public void mouseReleased(MouseEvent event) {
+
 		}
 
 		public void mouseEntered(MouseEvent event) {
