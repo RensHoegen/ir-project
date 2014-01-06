@@ -8,15 +8,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class ImageSummaryExtractor {
 	private static final int NUMBER_OF_AREAS = 1;
-	private static final Color[] COLORS = createColors();
+	private static final Color[] COLORS = createReferenceColors();
 
-	public static ImageSummary extractImageSummary(InputStream imageStream)
-			throws IOException {
+	public static ImageSummary extractImageSummary(InputStream imageStream) throws IOException {
 		BufferedImage image = ImageIO.read(imageStream);
 		return extractImageSummaryInternal(image);
 	}
@@ -28,45 +29,39 @@ public class ImageSummaryExtractor {
 		}
 
 		normalizeHistogram(histogram);
-		return new ImageSummary(new ImageAreaSummary[] { new ImageAreaSummary(
-				histogram) });
+		return new ImageSummary(new ImageAreaSummary[] { new ImageAreaSummary(histogram) });
 	}
 
-	private static Color[] createColors() {
-		Color[] colors = new Color[4 * 4 * 4];
-		int index = 0;
-		for (int r = 0; r < 4; r++) {
-			for (int g = 0; g < 4; g++) {
-				for (int b = 0; b < 4; b++) {
-					colors[index] = new Color(r * 64 + 32, g * 64 + 32,
-							b * 64 + 32);
-					index++;
-				}
+	private static Color[] createReferenceColors() {
+		List<Color> colors = new ArrayList<Color>();
+
+		colors.add(Color.BLACK);
+		colors.add(Color.WHITE);
+		colors.add(Color.GRAY);
+		for (float h = 0; h < 1.0f; h += 0.05f) {
+			for (float b : new float[] { 0.50f, 0.85f }) {
+				colors.add(Color.getHSBColor(h, 0.75f, b));
 			}
 		}
-		return colors;
+		return colors.toArray(new Color[0]);
 	}
 
-	public static ImageSummary extractImageSummary(File imageFile)
-			throws IOException {
+	public static ImageSummary extractImageSummary(File imageFile) throws IOException {
 		BufferedImage image = ImageIO.read(imageFile);
 		return extractImageSummaryInternal(image);
 	}
 
 	private static ImageSummary extractImageSummaryInternal(BufferedImage image) {
-		ImageAreaSummary[] areaSummaries = new ImageAreaSummary[NUMBER_OF_AREAS
-				* NUMBER_OF_AREAS];
+		ImageAreaSummary[] areaSummaries = new ImageAreaSummary[NUMBER_OF_AREAS * NUMBER_OF_AREAS];
 		for (int x = 0; x < NUMBER_OF_AREAS; x++) {
 			for (int y = 0; y < NUMBER_OF_AREAS; y++) {
-				areaSummaries[x + y * NUMBER_OF_AREAS] = extractImageAreaSummary(
-						image, x, y);
+				areaSummaries[x + y * NUMBER_OF_AREAS] = extractImageAreaSummary(image, x, y);
 			}
 		}
 		return new ImageSummary(areaSummaries);
 	}
 
-	private static ImageAreaSummary extractImageAreaSummary(
-			BufferedImage image, int areaX, int areaY) {
+	private static ImageAreaSummary extractImageAreaSummary(BufferedImage image, int areaX, int areaY) {
 		int xStart = image.getWidth() * areaX / NUMBER_OF_AREAS;
 		int xEnd = image.getWidth() * (areaX + 1) / NUMBER_OF_AREAS;
 		int yStart = image.getHeight() * areaY / NUMBER_OF_AREAS;
@@ -96,18 +91,23 @@ public class ImageSummaryExtractor {
 	}
 
 	private static void addPixelToHistogram(double[] histogram, Color pixelColor) {
+		double[] weightPerColor = new double[COLORS.length];
+		double weightSum = 0.0d;
 		for (int i = 0; i < COLORS.length; i++) {
-			double dist = calculateDistanceBetweenColors(COLORS[i], pixelColor);
-			histogram[i] += 1 / dist;
+			double distance = calculateDistanceBetweenColors(COLORS[i], pixelColor) + 1.0e-4;
+			double weight = 1 / distance / distance;
+			weightPerColor[i] = weight;
+			weightSum += weight;
+		}
+		for (int i = 0; i < COLORS.length; i++) {
+			histogram[i] += weightPerColor[i] / weightSum;
 		}
 	}
 
-	private static double calculateDistanceBetweenColors(Color colorA,
-			Color colorB) {
+	private static double calculateDistanceBetweenColors(Color colorA, Color colorB) {
 		int redDiff = colorA.getRed() - colorB.getRed();
 		int greenDiff = colorA.getGreen() - colorB.getGreen();
 		int blueDiff = colorA.getBlue() - colorB.getBlue();
-		return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff
-				* blueDiff);
+		return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff * blueDiff);
 	}
 }
