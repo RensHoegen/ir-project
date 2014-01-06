@@ -74,18 +74,19 @@ public class GuiInvoker {
 
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
 
-		Handlerclass2 handler2 = new Handlerclass2();
-		JButton btnQuit = new JButton("");
-		btnQuit.setIcon(new ImageIcon(GuiInvoker.class.getResource("quit.png")));
-		btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("quit_over.png")));
-		btnQuit.setBounds(1224, 6, 50, 50);
-		btnQuit.setBorderPainted(false);
-		btnQuit.setContentAreaFilled(false);
-		btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(btnQuit);
-		btnQuit.addMouseListener(handler2);
-		btnQuit.addMouseMotionListener(handler2);
+		// Handlerclass2 handler2 = new Handlerclass2();
+		// JButton btnQuit = new JButton("");
+		// btnQuit.setIcon(new
+		// ImageIcon(GuiInvoker.class.getResource("quit.png")));
+		// btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("quit_over.png")));
+		// btnQuit.setBounds(1224, 6, 50, 50);
+		// btnQuit.setBorderPainted(false);
+		// btnQuit.setContentAreaFilled(false);
+		// btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		// frmClusteredImageRetrieval.getContentPane().add(btnQuit);
+		// btnQuit.addMouseListener(handler2);
+		// btnQuit.addMouseMotionListener(handler2);
 
 		statusbar = new JLabel("");
 		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -512,36 +513,37 @@ public class GuiInvoker {
 
 	}
 
-	private class Handlerclass2 implements MouseListener, MouseMotionListener {
-		public void mouseClicked(MouseEvent event) {
+	// private class Handlerclass2 implements MouseListener, MouseMotionListener
+	// {
+	// public void mouseClicked(MouseEvent event) {
 
-		}
+	// }
 
-		public void mousePressed(MouseEvent event) {
+	// public void mousePressed(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseReleased(MouseEvent event) {
-			System.exit(0);
-		}
+	// public void mouseReleased(MouseEvent event) {
+	// System.exit(0);
+	// }
 
-		public void mouseEntered(MouseEvent event) {
+	// public void mouseEntered(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseExited(MouseEvent event) {
+	// public void mouseExited(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseDragged(MouseEvent event) {
+	// public void mouseDragged(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseMoved(MouseEvent event) {
+	// public void mouseMoved(MouseEvent event) {
 
-		}
+	// }
 
-	}
+	// }
 
 	private class Handlerclass3 implements MouseListener, MouseMotionListener {
 		public void mouseClicked(MouseEvent event) {
