@@ -32,7 +32,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-
 import com.google.common.collect.Multimap;
 
 public class GuiInvoker {
@@ -430,7 +429,6 @@ public class GuiInvoker {
 
 		randomizeImageToFind();
 
-
 		JLabel frame1 = new JLabel("frame1");
 		frame1.setIcon(new ImageIcon(GuiInvoker.class.getResource("frame.png")));
 		frame1.setPreferredSize(new Dimension(170, 170));
@@ -602,8 +600,6 @@ public class GuiInvoker {
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
 
-	
-
 		frmClusteredImageRetrieval.setUndecorated(true);
 
 		frmClusteredImageRetrieval.setBounds(0, 0, 1280, 800);
@@ -614,12 +610,9 @@ public class GuiInvoker {
 				.getLocalGraphicsEnvironment().getScreenDevices()[0];
 		device.setFullScreenWindow(frmClusteredImageRetrieval);
 
-		
-
 		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
 
 		frmClusteredImageRetrieval.setResizable(false);
-
 
 		frmClusteredImageRetrieval.setVisible(true);
 	}
@@ -747,8 +740,8 @@ public class GuiInvoker {
 			if (pathBarImages.size() > i) {
 				pathBarButtons[i].setIcon(new ImageIcon(new ImageIcon(new File(
 						IMG_DIR, "im" + (pathBarImages.get(i) + 1) + ".jpg")
-						.getAbsolutePath()).getImage().getScaledInstance(150,
-						150, java.awt.Image.SCALE_SMOOTH)));
+						.getAbsolutePath()).getImage().getScaledInstance(64,
+						64, java.awt.Image.SCALE_SMOOTH)));
 				PathBarButtonHandlerclass handler1 = new PathBarButtonHandlerclass();
 				handler1.clusters = pathBar.get(i);
 				handler1.position = i;
@@ -766,4 +759,3 @@ public class GuiInvoker {
 	}
 
 }
-

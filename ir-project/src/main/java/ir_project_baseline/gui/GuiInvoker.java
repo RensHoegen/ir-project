@@ -1,8 +1,7 @@
 package ir_project_baseline.gui;
 
-import ir_project.clustering.ClusteringUtils;
+import ir_project.clustering.SearchUtils;
 import ir_project.io.ImageSummaryReference;
-import ir_project.model.ImageSummary;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -23,10 +22,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,15 +32,13 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
-import com.google.common.collect.Multimap;
-
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
+			"/home/stefan/Downloads/image_thumbnails");
 	private JFrame frmClusteredImageRetrieval;
 	private ImageSummaryReference imageReference;
-	private List<Multimap<Integer, Integer>> pathBar = new ArrayList<Multimap<Integer, Integer>>();
+	private List<Color[]> pathBar = new ArrayList<Color[]>();
 	private List<Integer> pathBarImages = new ArrayList<Integer>();
 	private int imageToFind;
 
@@ -68,44 +62,29 @@ public class GuiInvoker {
 	 * Create the application.
 	 */
 	public GuiInvoker() throws FileNotFoundException, IOException,
-	ClassNotFoundException {
-initialize();
+			ClassNotFoundException {
+		initialize();
 
-}
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() throws FileNotFoundException, IOException,
-	ClassNotFoundException {
+			ClassNotFoundException {
 
-System.out.println("Loading...");
-imageReference = ImageSummaryReference.loadImageSummary();
-Map<Integer, ImageSummary> imageReferenceMap = new HashMap<Integer, ImageSummary>();
-for (int i = 0; i < imageReference.size(); i++) {
-	imageReferenceMap.put(i, imageReference.getImageSummary(i));
-}
-
-System.out.println("Clustering...");
-Multimap<Integer, Integer> clusters = ClusteringUtils
-		.createClusters(imageReferenceMap);
-List<Integer> clusterCentroids = new ArrayList<Integer>();
-for (Collection<Integer> cluster : clusters.asMap().values()) {
-	clusterCentroids.add(ClusteringUtils
-			.findClusterRepresentation(imageReference
-					.getImageSummaries(cluster)));
-}
-pathBar.add(clusters);
+		System.out.println("Loading...");
+		imageReference = ImageSummaryReference.loadImageSummary();
 
 		frmClusteredImageRetrieval = new JFrame();
-		
-		 try {
-			    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
-			 } catch (Exception e) {
-			            e.printStackTrace();
-			 }
-		
-		
+
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		frmClusteredImageRetrieval.getContentPane().setBackground(
 				new Color(96, 97, 98));
 		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
@@ -119,76 +98,44 @@ pathBar.add(clusters);
 				new Font("Century Gothic", Font.PLAIN, 16));
 
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
-		
+
 		final ColorChooserDemo colorPicker = new ColorChooserDemo();
 		colorPicker.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		colorPicker.setPreferredSize(new Dimension(557, 66));
 		colorPicker.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
-		
+
 		colorPicker.setAlignmentY(0.0f);
 		colorPicker.setBounds(750, 425, 500, 250);
 		colorPicker.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(colorPicker);
-	
 
-		
 		final JButton colorPickerB1 = new JButton("Pick Color 1");
 		colorPickerB1.setBounds(725, 700, 105, 50);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB1);
-		
-		colorPickerB1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-	        {
-	            colorPickerB1.setBackground(colorPicker.getColor());
-	        
-	        }
-		});
-		
+
+		System.out.println(colorPickerB1.getBackground());
+
 		final JButton colorPickerB2 = new JButton("Pick Color 2");
 		colorPickerB2.setBounds(850, 700, 105, 50);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB2);
-		
-		colorPickerB2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-	        {
-	            colorPickerB2.setBackground(colorPicker.getColor());	
-	        }
-		});
-		
+
 		final JButton colorPickerB3 = new JButton("Pick Color 3");
 		colorPickerB3.setBounds(975, 700, 105, 50);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB3);
-		
-		colorPickerB3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-	        {
-	            colorPickerB3.setBackground(colorPicker.getColor());	
-	        }
-		});
-		
+
 		final JButton colorPickerB4 = new JButton("Pick Color 4");
 		colorPickerB4.setBounds(1100, 700, 105, 50);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB4);
-		
-		colorPickerB4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-	        {
-	            colorPickerB4.setBackground(colorPicker.getColor());	
-	        }
-		});
-		
+
 		final JButton colorPickerB5 = new JButton("Pick Color 5");
 		colorPickerB5.setBounds(1225, 700, 105, 50);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB5);
-		
-		colorPickerB5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-	        {
-	            colorPickerB5.setBackground(colorPicker.getColor());	
-	        }
+
+		colorPickerB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB1.setBackground(colorPicker.getColor());
+			}
 		});
-		
-		
 
 		JLabel arrow1 = new JLabel("next");
 		arrow1.setIcon(new ImageIcon(GuiInvoker.class.getResource("arrow.png")));
@@ -229,7 +176,6 @@ pathBar.add(clusters);
 		arrow4.setAlignmentY(0.0f);
 		arrow4.setBounds(547, 24, 32, 31);
 		frmClusteredImageRetrieval.getContentPane().add(arrow4);
-
 
 		JButton cluster1_image = new JButton("");
 		cluster1_image.setBounds(70, 6, 66, 66);
@@ -296,8 +242,6 @@ pathBar.add(clusters);
 		cluster5_image.setBounds(591, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster5_image);
 
-		
-		
 		JButton image_1 = new JButton("");
 		image_1.setBounds(24, 110, 150, 150);
 		image_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -462,13 +406,54 @@ pathBar.add(clusters);
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-		JButton[] imagebuttons = { image_1, image_2, image_3, image_4, image_5,
-				image_6, image_7, image_8, image_9, image_10, image_11,
-				image_12, image_13, image_14, image_15, image_16 };
-		JButton[] pathBarButtons = { cluster1_image, cluster2_image,cluster3_image, cluster4_image, cluster5_image };
+		final JButton[] imagebuttons = { image_1, image_2, image_3, image_4,
+				image_5, image_6, image_7, image_8, image_9, image_10,
+				image_11, image_12, image_13, image_14, image_15, image_16 };
+		final JButton[] pathBarButtons = { cluster1_image, cluster2_image,
+				cluster3_image, cluster4_image, cluster5_image };
 
-		updateImageButtons(clusters, clusterCentroids, imagebuttons,
-				pathBarButtons);
+		for (int i = 0; i < imagebuttons.length; i++) {
+			imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
+					.getResource("not_available.png")));
+		}
+		for (int i = 0; i < pathBarButtons.length; i++) {
+			pathBarButtons[i].setIcon(new ImageIcon(GuiInvoker.class
+					.getResource("not_available.png")));
+		}
+
+		final JButton[] colorPickers = { colorPickerB1, colorPickerB2,
+				colorPickerB3, colorPickerB4, colorPickerB5 };
+
+		colorPickerB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB1.setBackground(colorPicker.getColor());
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+			}
+		});
+		colorPickerB2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB2.setBackground(colorPicker.getColor());
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+			}
+		});
+		colorPickerB3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB3.setBackground(colorPicker.getColor());
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+			}
+		});
+		colorPickerB4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB4.setBackground(colorPicker.getColor());
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+			}
+		});
+		colorPickerB5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				colorPickerB5.setBackground(colorPicker.getColor());
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+			}
+		});
 
 		search_image = new JLabel("search image");
 
@@ -482,7 +467,6 @@ pathBar.add(clusters);
 		frmClusteredImageRetrieval.getContentPane().add(search_image);
 
 		randomizeImageToFind();
-
 
 		JLabel frame1 = new JLabel("frame1");
 		frame1.setIcon(new ImageIcon(GuiInvoker.class.getResource("frame.png")));
@@ -643,8 +627,7 @@ pathBar.add(clusters);
 		frame16.setAlignmentY(0.0f);
 		frame16.setBounds(189, 622, 170, 170);
 		frmClusteredImageRetrieval.getContentPane().add(frame16);
-		
-		
+
 		JLabel background = new JLabel("16");
 		background.setIcon(new ImageIcon(GuiInvoker.class
 				.getResource("gui.png")));
@@ -655,11 +638,9 @@ pathBar.add(clusters);
 		background.setAlignmentY(0.0f);
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
-		
-		
-		
-		//background.addMouseListener(handler);
-		//background.addMouseMotionListener(handler);
+
+		// background.addMouseListener(handler);
+		// background.addMouseMotionListener(handler);
 
 		frmClusteredImageRetrieval.setUndecorated(true);
 
@@ -671,54 +652,29 @@ pathBar.add(clusters);
 				.getLocalGraphicsEnvironment().getScreenDevices()[0];
 		device.setFullScreenWindow(frmClusteredImageRetrieval);
 
-
 		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
-		
-		
 
 		frmClusteredImageRetrieval.setResizable(false);
-
 
 		frmClusteredImageRetrieval.setVisible(true);
 	}
 
 	private void randomizeImageToFind() {
-		imageToFind = (int) (Math.random() * imageReference.size());
+		List<Integer> allImages = imageReference.getListOfAllImages();
+		imageToFind = allImages.get((int) (Math.random() * allImages.size()));
 		search_image.setIcon(new ImageIcon(new ImageIcon(new File(IMG_DIR, "im"
 				+ (imageToFind + 1) + ".jpg").getAbsolutePath()).getImage()
 				.getScaledInstance(309, 309, java.awt.Image.SCALE_SMOOTH)));
 	}
 
-	private boolean imageButtonsAreLocked = false;
 	private JLabel search_image;
 
-	private void updateImageButtons(Multimap<Integer, Integer> clusters,
-			List<Integer> clusterCentroids, final JButton[] imagebuttons,
-			final JButton[] pathBarButtons) {
+	private void updateImageButtons(final JButton[] colorPickers,
+			final JButton[] imagebuttons, final JButton[] pathBarButtons) {
 		class ImageButtonHandlerclass implements MouseListener {
-			private Collection<Integer> cluster;
-			private int clusterImage;
 
 			public void mouseClicked(MouseEvent event) {
-				if (imageButtonsAreLocked) {
-					return;
-				}
-				imageButtonsAreLocked = true;
-				Map<Integer, ImageSummary> imageReferenceMap = imageReference
-						.getImageSummaries(cluster);
-				Multimap<Integer, Integer> clusters = ClusteringUtils
-						.createClusters(imageReferenceMap);
-				List<Integer> clusterCentroids = new ArrayList<Integer>();
-				for (Collection<Integer> cluster : clusters.asMap().values()) {
-					clusterCentroids.add(ClusteringUtils
-							.findClusterRepresentation(imageReference
-									.getImageSummaries(cluster)));
-				}
-				pathBar.add(clusters);
-				pathBarImages.add(clusterImage);
-				updateImageButtons(clusters, clusterCentroids, imagebuttons,
-						pathBarButtons);
-				imageButtonsAreLocked = false;
+
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -738,20 +694,32 @@ pathBar.add(clusters);
 			}
 		}
 
+		List<Color> colors = new ArrayList<Color>();
+		Color[] allColors = new Color[colorPickers.length];
+		for (int i = 0; i < colorPickers.length; i++) {
+			if (!colorPickers[i].getBackground().equals(
+					new Color(238, 238, 238))) {
+				colors.add(colorPickers[i].getBackground());
+			}
+			allColors[i] = colorPickers[i].getBackground();
+		}
+		List<Integer> sortedImages = SearchUtils.searchByColor(imageReference,
+				colors.toArray(new Color[0]));
+		pathBar.add(allColors);
+		pathBarImages.add(sortedImages.get(0));
+
 		for (int i = 0; i < imagebuttons.length; i++) {
 			for (MouseListener mouseListener : imagebuttons[i]
 					.getMouseListeners()) {
 				imagebuttons[i].removeMouseListener(mouseListener);
 			}
-			if (clusterCentroids.size() > i) {
+			if (sortedImages.size() > i) {
 				imagebuttons[i].setIcon(new ImageIcon(new ImageIcon(new File(
-						IMG_DIR, "im" + (clusterCentroids.get(i) + 1) + ".jpg")
+						IMG_DIR, "im" + (sortedImages.get(i) + 1) + ".jpg")
 						.getAbsolutePath()).getImage().getScaledInstance(150,
 						150, java.awt.Image.SCALE_SMOOTH)));
-				if (clusterCentroids.size() > 1) {
+				if (sortedImages.size() > 1) {
 					ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
-					handler1.cluster = clusters.get(i);
-					handler1.clusterImage = clusterCentroids.get(i);
 					imagebuttons[i].addMouseListener(handler1);
 				}
 			} else {
@@ -761,22 +729,19 @@ pathBar.add(clusters);
 		}
 
 		class PathBarButtonHandlerclass implements MouseListener {
-			private Multimap<Integer, Integer> clusters;
 			private int position;
+			Color[] colors;
 
 			public void mouseClicked(MouseEvent event) {
-				while (pathBar.size() > position + 1) {
+				while (pathBar.size() > position) {
 					pathBar.remove(pathBar.size() - 1);
 					pathBarImages.remove(pathBarImages.size() - 1);
 				}
-				List<Integer> clusterCentroids = new ArrayList<Integer>();
-				for (Collection<Integer> cluster : clusters.asMap().values()) {
-					clusterCentroids.add(ClusteringUtils
-							.findClusterRepresentation(imageReference
-									.getImageSummaries(cluster)));
+				for (int i = 0; i < colorPickers.length; i++) {
+					colorPickers[i].setBackground(colors[i]);
 				}
-				updateImageButtons(clusters, clusterCentroids, imagebuttons,
-						pathBarButtons);
+
+				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -804,11 +769,11 @@ pathBar.add(clusters);
 			if (pathBarImages.size() > i) {
 				pathBarButtons[i].setIcon(new ImageIcon(new ImageIcon(new File(
 						IMG_DIR, "im" + (pathBarImages.get(i) + 1) + ".jpg")
-						.getAbsolutePath()).getImage().getScaledInstance(150,
-						150, java.awt.Image.SCALE_SMOOTH)));
+						.getAbsolutePath()).getImage().getScaledInstance(64,
+						64, java.awt.Image.SCALE_SMOOTH)));
 				PathBarButtonHandlerclass handler1 = new PathBarButtonHandlerclass();
-				handler1.clusters = pathBar.get(i);
 				handler1.position = i;
+				handler1.colors = pathBar.get(i);
 				pathBarButtons[i].addMouseListener(handler1);
 			} else {
 				pathBarButtons[i].setIcon(new ImageIcon(GuiInvoker.class

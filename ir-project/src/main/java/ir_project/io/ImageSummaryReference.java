@@ -22,7 +22,7 @@ public class ImageSummaryReference implements Serializable {
 
 	private static final int NUMBER_OF_IMAGES_TO_LOAD = 10000;
 	public final static File THUMBNAIL_IMAGE_DIRECTORY = new File(
-			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
+			"/home/stefan/Downloads/image_thumbnails");
 	private final static File IMAGE_REFERENCE_FILE = new File(
 			THUMBNAIL_IMAGE_DIRECTORY, "reference.obj");
 
