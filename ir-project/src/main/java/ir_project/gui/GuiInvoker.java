@@ -15,10 +15,6 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
-//import java.awt.event.MouseEvent;
-//import java.awt.event.MouseListener;
-//import java.awt.event.MouseMotionListener;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -43,9 +39,10 @@ import com.google.common.collect.Multimap;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/Users/Robert/MIRFLICKR_THUMBS/images/");
+			"/home/stefan/Downloads/image_thumbnails");
 	private JFrame frmClusteredImageRetrieval;
 	private JLabel statusbar;
+	private ImageSummaryReference imageReference;
 
 	/**
 	 * Launch the application.
@@ -87,8 +84,7 @@ public class GuiInvoker {
 			ClassNotFoundException {
 
 		System.out.println("Loading...");
-		ImageSummaryReference imageReference = ImageSummaryReference
-				.loadImageSummary();
+		imageReference = ImageSummaryReference.loadImageSummary();
 		Map<Integer, ImageSummary> imageReferenceMap = new HashMap<Integer, ImageSummary>();
 		for (int i = 0; i < imageReference.size(); i++) {
 			imageReferenceMap.put(i, imageReference.getImageSummary(i));
@@ -407,11 +403,10 @@ public class GuiInvoker {
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-
 		JButton[] imagebuttons = { image_1, image_2, image_3, image_4, image_5,
 				image_6, image_7, image_8, image_9, image_10, image_11,
 				image_12, image_13, image_14, image_15, image_16 };
-		
+
 		updateImageButtons(clusters, clusterCentroids, imagebuttons);
 
 		JLabel search_image = new JLabel("search image");
@@ -718,13 +713,22 @@ public class GuiInvoker {
 	}
 
 	private void updateImageButtons(Multimap<Integer, Integer> clusters,
-			List<Integer> clusterCentroids, JButton[] imagebuttons) {
+			List<Integer> clusterCentroids, final JButton[] imagebuttons) {
 		class Handlerclass implements MouseListener {
 			private Collection<Integer> cluster;
 
 			public void mouseClicked(MouseEvent event) {
-				statusbar.setText(String.format("Clicked " + cluster.size(),
-						event.getX(), event.getY()));
+				Map<Integer, ImageSummary> imageReferenceMap = imageReference
+						.getImageSummaries(cluster);
+				Multimap<Integer, Integer> clusters = ClusteringUtils
+						.createClusters(imageReferenceMap);
+				List<Integer> clusterCentroids = new ArrayList<Integer>();
+				for (Collection<Integer> cluster : clusters.asMap().values()) {
+					clusterCentroids.add(ClusteringUtils
+							.findClusterRepresentation(imageReference
+									.getImageSummaries(cluster)));
+				}
+				updateImageButtons(clusters, clusterCentroids, imagebuttons);
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -746,6 +750,10 @@ public class GuiInvoker {
 		}
 
 		for (int i = 0; i < imagebuttons.length; i++) {
+			for (MouseListener mouseListener : imagebuttons[i]
+					.getMouseListeners()) {
+				imagebuttons[i].removeMouseListener(mouseListener);
+			}
 			if (clusterCentroids.size() > i) {
 				imagebuttons[i].setIcon(new ImageIcon(new ImageIcon(new File(
 						IMG_DIR, "im" + (clusterCentroids.get(i) + 1) + ".jpg")
