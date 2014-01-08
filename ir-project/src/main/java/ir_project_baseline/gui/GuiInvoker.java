@@ -492,7 +492,7 @@ public class GuiInvoker {
 		cluster1.addMouseListener(cluster1_handler);
 		cluster1.addMouseMotionListener(cluster1_handler);
 
-		JLabel background = new JLabel("16");
+		JLabel background = new JLabel("background");
 		background.setIcon(new ImageIcon(GuiInvoker.class
 				.getResource("gui.png")));
 		background.setPreferredSize(new Dimension(150, 150));

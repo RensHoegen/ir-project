@@ -11,9 +11,9 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+//import java.awt.event.MouseEvent;
+//import java.awt.event.MouseListener;
+//import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -94,8 +94,24 @@ public class GuiInvoker {
 		statusbar.setText("Find this image!");
 		frmClusteredImageRetrieval.getContentPane().add(statusbar);
 
-		Handlerclass handler = new Handlerclass();
+		// Handlerclass handler = new Handlerclass();
 
+		
+		JLabel frame1 = new JLabel("frame1");
+		frame1.setIcon(new ImageIcon(GuiInvoker.class
+				.getResource("frame.png")));
+		frame1.setPreferredSize(new Dimension(170, 170));
+		frame1.setIconTextGap(10);
+		frame1
+				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		frame1.setBorder(null);
+		frame1.setAlignmentY(0.0f);
+		frame1.setBounds(15, 620, 170, 170);
+		frmClusteredImageRetrieval.getContentPane().add(frame1);
+		
+
+		
+		
 		JButton image_1 = new JButton("1");
 		image_1.setBounds(21, 20, 150, 150);
 		image_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -105,7 +121,7 @@ public class GuiInvoker {
 		image_1.setPreferredSize(new Dimension(150, 150));
 		image_1.setBorder(null);
 		image_1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_1);
+		// frmClusteredImageRetrieval.getContentPane().add(image_1);
 
 		JButton image_2 = new JButton("2");
 		image_2.setBounds(196, 20, 150, 150);
@@ -116,7 +132,7 @@ public class GuiInvoker {
 		image_2.setBorder(null);
 		image_2.setAlignmentY(0.0f);
 		image_2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_2);
+		// frmClusteredImageRetrieval.getContentPane().add(image_2);
 
 		JButton image_3 = new JButton("3");
 		image_3.setIcon(new ImageIcon(GuiInvoker.class.getResource("3.jpg")));
@@ -127,7 +143,7 @@ public class GuiInvoker {
 		image_3.setAlignmentY(0.0f);
 		image_3.setBounds(371, 20, 150, 150);
 		image_3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_3);
+		// frmClusteredImageRetrieval.getContentPane().add(image_3);
 
 		JButton image_4 = new JButton("4");
 		image_4.setIcon(new ImageIcon(GuiInvoker.class.getResource("4.jpg")));
@@ -138,7 +154,7 @@ public class GuiInvoker {
 		image_4.setAlignmentY(0.0f);
 		image_4.setBounds(546, 20, 150, 150);
 		image_4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_4);
+		// frmClusteredImageRetrieval.getContentPane().add(image_4);
 
 		JButton image_5 = new JButton("5");
 		image_5.setIcon(new ImageIcon(GuiInvoker.class.getResource("5.jpeg")));
@@ -149,7 +165,7 @@ public class GuiInvoker {
 		image_5.setAlignmentY(0.0f);
 		image_5.setBounds(21, 215, 150, 150);
 		image_5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_5);
+		// frmClusteredImageRetrieval.getContentPane().add(image_5);
 
 		JButton image_6 = new JButton("6");
 		image_6.setIcon(new ImageIcon(GuiInvoker.class.getResource("6.jpg")));
@@ -160,7 +176,7 @@ public class GuiInvoker {
 		image_6.setAlignmentY(0.0f);
 		image_6.setBounds(196, 215, 150, 150);
 		image_6.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_6);
+		// frmClusteredImageRetrieval.getContentPane().add(image_6);
 
 		JButton image_7 = new JButton("7");
 		image_7.setIcon(new ImageIcon(GuiInvoker.class.getResource("7.jpeg")));
@@ -171,7 +187,7 @@ public class GuiInvoker {
 		image_7.setAlignmentY(0.0f);
 		image_7.setBounds(371, 215, 150, 150);
 		image_7.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_7);
+		// frmClusteredImageRetrieval.getContentPane().add(image_7);
 
 		JButton image_8 = new JButton("8");
 		image_8.setIcon(new ImageIcon(GuiInvoker.class.getResource("8.jpg")));
@@ -182,7 +198,7 @@ public class GuiInvoker {
 		image_8.setAlignmentY(0.0f);
 		image_8.setBounds(546, 215, 150, 150);
 		image_8.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_8);
+		// frmClusteredImageRetrieval.getContentPane().add(image_8);
 
 		JButton image_9 = new JButton("9");
 		image_9.setIcon(new ImageIcon(GuiInvoker.class.getResource("9.jpg")));
@@ -193,7 +209,7 @@ public class GuiInvoker {
 		image_9.setAlignmentY(0.0f);
 		image_9.setBounds(21, 411, 150, 150);
 		image_9.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_9);
+		// frmClusteredImageRetrieval.getContentPane().add(image_9);
 
 		JButton image_10 = new JButton("10");
 		image_10.setIcon(new ImageIcon(GuiInvoker.class.getResource("10.jpeg")));
@@ -204,7 +220,7 @@ public class GuiInvoker {
 		image_10.setAlignmentY(0.0f);
 		image_10.setBounds(196, 411, 150, 150);
 		image_10.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_10);
+		// frmClusteredImageRetrieval.getContentPane().add(image_10);
 
 		JButton image_11 = new JButton("11");
 		image_11.setIcon(new ImageIcon(GuiInvoker.class.getResource("11.jpeg")));
@@ -215,7 +231,7 @@ public class GuiInvoker {
 		image_11.setAlignmentY(0.0f);
 		image_11.setBounds(371, 411, 150, 150);
 		image_11.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_11);
+		// frmClusteredImageRetrieval.getContentPane().add(image_11);
 
 		JButton image_12 = new JButton("12");
 		image_12.setIcon(new ImageIcon(GuiInvoker.class.getResource("12.jpeg")));
@@ -226,7 +242,7 @@ public class GuiInvoker {
 		image_12.setAlignmentY(0.0f);
 		image_12.setBounds(546, 411, 150, 150);
 		image_12.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_12);
+		// frmClusteredImageRetrieval.getContentPane().add(image_12);
 
 		JButton image_13 = new JButton("13");
 		image_13.setIcon(new ImageIcon(GuiInvoker.class.getResource("13.jpeg")));
@@ -237,7 +253,7 @@ public class GuiInvoker {
 		image_13.setAlignmentY(0.0f);
 		image_13.setBounds(21, 607, 150, 150);
 		image_13.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_13);
+		// frmClusteredImageRetrieval.getContentPane().add(image_13);
 
 		JButton image_14 = new JButton("14");
 		image_14.setIcon(new ImageIcon(GuiInvoker.class.getResource("14.jpeg")));
@@ -248,7 +264,7 @@ public class GuiInvoker {
 		image_14.setAlignmentY(0.0f);
 		image_14.setBounds(196, 607, 150, 150);
 		image_14.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_14);
+		// frmClusteredImageRetrieval.getContentPane().add(image_14);
 
 		JButton image_15 = new JButton("15");
 		image_15.setIcon(new ImageIcon(GuiInvoker.class.getResource("15.jpg")));
@@ -259,7 +275,7 @@ public class GuiInvoker {
 		image_15.setAlignmentY(0.0f);
 		image_15.setBounds(371, 607, 150, 150);
 		image_15.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_15);
+		// frmClusteredImageRetrieval.getContentPane().add(image_15);
 
 		JButton image_16 = new JButton("16");
 		image_16.setIcon(new ImageIcon(GuiInvoker.class.getResource("16.jpg")));
@@ -270,7 +286,7 @@ public class GuiInvoker {
 		image_16.setAlignmentY(0.0f);
 		image_16.setBounds(546, 607, 150, 150);
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(image_16);
+		// frmClusteredImageRetrieval.getContentPane().add(image_16);
 
 		JLabel search_image = new JLabel("search image");
 		search_image.setIcon(new ImageIcon(GuiInvoker.class
@@ -297,7 +313,7 @@ public class GuiInvoker {
 		cluster1_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(cluster1_image);
 
-		Handlerclass3 cluster1_handler = new Handlerclass3();
+		// Handlerclass3 cluster1_handler = new Handlerclass3();
 
 		JButton cluster1 = new JButton("");
 		cluster1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -438,8 +454,8 @@ public class GuiInvoker {
 		frmClusteredImageRetrieval.getContentPane().add(cluster4);
 		frmClusteredImageRetrieval.getContentPane().add(cluster5);
 
-		cluster1.addMouseListener(cluster1_handler);
-		cluster1.addMouseMotionListener(cluster1_handler);
+		//	cluster1.addMouseListener(cluster1_handler);
+		// cluster1.addMouseMotionListener(cluster1_handler);
 
 		JLabel background = new JLabel("16");
 		background.setIcon(new ImageIcon(GuiInvoker.class
@@ -450,10 +466,10 @@ public class GuiInvoker {
 		background.setBorder(null);
 		background.setAlignmentY(0.0f);
 		background.setBounds(0, 0, 1280, 800);
-
 		frmClusteredImageRetrieval.getContentPane().add(background);
-		background.addMouseListener(handler);
-		background.addMouseMotionListener(handler);
+		
+		//background.addMouseListener(handler);
+		//background.addMouseMotionListener(handler);
 
 		frmClusteredImageRetrieval.setUndecorated(true);
 
@@ -469,6 +485,8 @@ public class GuiInvoker {
 		// .getExtendedState() | Frame.MAXIMIZED_BOTH);
 
 		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
+		
+		
 
 		frmClusteredImageRetrieval.setResizable(false);
 		// frmClusteredImageRetrieval.setSize(width, height);
@@ -481,37 +499,37 @@ public class GuiInvoker {
 
 	}
 
-	private class Handlerclass implements MouseListener, MouseMotionListener {
-		public void mouseClicked(MouseEvent event) {
+	// private class Handlerclass implements MouseListener, MouseMotionListener {
+	//	public void mouseClicked(MouseEvent event) {
 			// statusbar.setText(String.format("Clicked at %d,%d",
 			// event.getX(),event.getY()));
-		}
+	//		}
 
-		public void mousePressed(MouseEvent event) {
+	//		public void mousePressed(MouseEvent event) {
 			// statusbar.setText("Pressed");
-		}
+	//	}
 
-		public void mouseReleased(MouseEvent event) {
+	//	public void mouseReleased(MouseEvent event) {
 			// statusbar.setText("Released");
-		}
+	//	}
 
-		public void mouseEntered(MouseEvent event) {
+	//	public void mouseEntered(MouseEvent event) {
 			// statusbar.setText("Entered");
-		}
+	//		}
 
-		public void mouseExited(MouseEvent event) {
+	//	public void mouseExited(MouseEvent event) {
 			// statusbar.setText("Exited");
-		}
+	//	}
 
-		public void mouseDragged(MouseEvent event) {
+	//	public void mouseDragged(MouseEvent event) {
 			// statusbar.setText("Dragged");
 
-		}
+	//	}
 
-		public void mouseMoved(MouseEvent event) {
+	//	public void mouseMoved(MouseEvent event) {
 			// statusbar.setText("Moved");
 
-		}
+	//		}
 
 	}
 
@@ -547,34 +565,34 @@ public class GuiInvoker {
 
 	// }
 
-	private class Handlerclass3 implements MouseListener, MouseMotionListener {
-		public void mouseClicked(MouseEvent event) {
+//	private class Handlerclass3 implements MouseListener, MouseMotionListener {
+//	public void mouseClicked(MouseEvent event) {
 
-		}
+//	}
 
-		public void mousePressed(MouseEvent event) {
+//	public void mousePressed(MouseEvent event) {
 
-		}
+//	}
 
-		public void mouseReleased(MouseEvent event) {
+//		public void mouseReleased(MouseEvent event) {
 
-		}
+//	}
 
-		public void mouseEntered(MouseEvent event) {
+//		public void mouseEntered(MouseEvent event) {
 
-		}
+//		}
 
-		public void mouseExited(MouseEvent event) {
+//	public void mouseExited(MouseEvent event) {
 
-		}
+//	}
 
-		public void mouseDragged(MouseEvent event) {
+//	public void mouseDragged(MouseEvent event) {
 
-		}
+//	}
 
-		public void mouseMoved(MouseEvent event) {
+//	public void mouseMoved(MouseEvent event) {
 
-		}
+//	}
 
-	}
-}
+//}
+//}
