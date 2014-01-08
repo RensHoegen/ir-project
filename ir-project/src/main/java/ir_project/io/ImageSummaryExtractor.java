@@ -40,7 +40,7 @@ public class ImageSummaryExtractor {
 		// colors.add(Color.BLACK);
 		// colors.add(Color.WHITE);
 		// colors.add(Color.GRAY);
-		for (float h = 0; h < 1.0f; h += 0.05f) {
+		for (float h = 0; h < 1.0f; h += 0.10f) {
 			for (float b : new float[] { /* 0.50f , */0.85f }) {
 				colors.add(Color.getHSBColor(h, 0.75f, b));
 			}

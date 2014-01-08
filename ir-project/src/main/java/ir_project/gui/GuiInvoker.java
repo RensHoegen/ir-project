@@ -22,7 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,10 +87,8 @@ public class GuiInvoker {
 
 		System.out.println("Loading...");
 		imageReference = ImageSummaryReference.loadImageSummary();
-		Map<Integer, ImageSummary> imageReferenceMap = new HashMap<Integer, ImageSummary>();
-		for (int i = 0; i < imageReference.size(); i++) {
-			imageReferenceMap.put(i, imageReference.getImageSummary(i));
-		}
+		Map<Integer, ImageSummary> imageReferenceMap = imageReference
+				.getImageSummaries(imageReference.getListOfAllImages());
 
 		System.out.println("Clustering...");
 		Multimap<Integer, Integer> clusters = ClusteringUtils
@@ -725,7 +722,8 @@ public class GuiInvoker {
 	}
 
 	private void randomizeImageToFind() {
-		imageToFind = (int) (Math.random() * imageReference.size());
+		List<Integer> allImages = imageReference.getListOfAllImages();
+		imageToFind = allImages.get((int) (Math.random() * allImages.size()));
 		search_image.setIcon(new ImageIcon(new ImageIcon(new File(IMG_DIR, "im"
 				+ (imageToFind + 1) + ".jpg").getAbsolutePath()).getImage()
 				.getScaledInstance(309, 309, java.awt.Image.SCALE_SMOOTH)));
