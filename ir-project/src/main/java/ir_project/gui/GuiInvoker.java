@@ -746,23 +746,20 @@ public class GuiInvoker {
 					return;
 				}
 				imageButtonsAreLocked = true;
-				if (cluster.size() > 1) {
-					Map<Integer, ImageSummary> imageReferenceMap = imageReference
-							.getImageSummaries(cluster);
-					Multimap<Integer, Integer> clusters = ClusteringUtils
-							.createClusters(imageReferenceMap);
-					List<Integer> clusterCentroids = new ArrayList<Integer>();
-					for (Collection<Integer> cluster : clusters.asMap()
-							.values()) {
-						clusterCentroids.add(ClusteringUtils
-								.findClusterRepresentation(imageReference
-										.getImageSummaries(cluster)));
-					}
-					pathBar.add(clusters);
-					pathBarImages.add(clusterImage);
-					updateImageButtons(clusters, clusterCentroids,
-							imagebuttons, pathBarButtons);
+				Map<Integer, ImageSummary> imageReferenceMap = imageReference
+						.getImageSummaries(cluster);
+				Multimap<Integer, Integer> clusters = ClusteringUtils
+						.createClusters(imageReferenceMap);
+				List<Integer> clusterCentroids = new ArrayList<Integer>();
+				for (Collection<Integer> cluster : clusters.asMap().values()) {
+					clusterCentroids.add(ClusteringUtils
+							.findClusterRepresentation(imageReference
+									.getImageSummaries(cluster)));
 				}
+				pathBar.add(clusters);
+				pathBarImages.add(clusterImage);
+				updateImageButtons(clusters, clusterCentroids, imagebuttons,
+						pathBarButtons);
 				imageButtonsAreLocked = false;
 			}
 
@@ -793,10 +790,12 @@ public class GuiInvoker {
 						IMG_DIR, "im" + (clusterCentroids.get(i) + 1) + ".jpg")
 						.getAbsolutePath()).getImage().getScaledInstance(150,
 						150, java.awt.Image.SCALE_SMOOTH)));
-				ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
-				handler1.cluster = clusters.get(i);
-				handler1.clusterImage = clusterCentroids.get(i);
-				imagebuttons[i].addMouseListener(handler1);
+				if (clusterCentroids.size() > 1) {
+					ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
+					handler1.cluster = clusters.get(i);
+					handler1.clusterImage = clusterCentroids.get(i);
+					imagebuttons[i].addMouseListener(handler1);
+				}
 			} else {
 				imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
 						.getResource("not_available.png")));
