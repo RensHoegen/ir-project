@@ -78,7 +78,8 @@ public class ClusteringUtils {
 
 	private static ImageSummary[] createInitialCentroids(
 			Map<Integer, ImageSummary> entries) {
-		ImageSummary[] centroids = new ImageSummary[NUMBER_OF_CLUSTERS];
+		ImageSummary[] centroids = new ImageSummary[Math.min(entries.size(),
+				NUMBER_OF_CLUSTERS)];
 		List<Integer> entryKeys = new ArrayList<Integer>(entries.keySet());
 		for (int i = 0; i < centroids.length; i++) {
 			int randomIndex = (int) (Math.random() * entryKeys.size());
