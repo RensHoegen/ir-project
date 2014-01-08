@@ -41,7 +41,7 @@ import com.google.common.collect.Multimap;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/Users/Robert/MIRFLICKR_THUMBS/images/");
+			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
 	private JFrame frmClusteredImageRetrieval;
 	private ImageSummaryReference imageReference;
 	private List<Multimap<Integer, Integer>> pathBar = new ArrayList<Multimap<Integer, Integer>>();
@@ -139,8 +139,7 @@ pathBar.add(clusters);
 		colorPickerB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB1.setBackground(colorPicker.getColor());	     
-	            colorPickerB1.setForeground(colorPicker.getColor());	
+	            colorPickerB1.setBackground(colorPicker.getColor());
 	        
 	        }
 		});
@@ -152,8 +151,7 @@ pathBar.add(clusters);
 		colorPickerB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB2.setBackground(colorPicker.getColor());
-	            colorPickerB2.setForeground(colorPicker.getColor());	
+	            colorPickerB2.setBackground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -164,8 +162,7 @@ pathBar.add(clusters);
 		colorPickerB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB3.setBackground(colorPicker.getColor());	  
-	            colorPickerB3.setForeground(colorPicker.getColor());	
+	            colorPickerB3.setBackground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -176,8 +173,7 @@ pathBar.add(clusters);
 		colorPickerB4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB4.setBackground(colorPicker.getColor());	   
-	            colorPickerB4.setForeground(colorPicker.getColor());	
+	            colorPickerB4.setBackground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -188,8 +184,7 @@ pathBar.add(clusters);
 		colorPickerB5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB5.setBackground(colorPicker.getColor());	    
-	            colorPickerB5.setForeground(colorPicker.getColor());	
+	            colorPickerB5.setBackground(colorPicker.getColor());	
 	        }
 		});
 		
