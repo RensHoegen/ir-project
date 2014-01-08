@@ -204,6 +204,7 @@ public class GuiInvoker {
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		cluster2_image.setBorder(new LineBorder(Color.BLACK));
 		cluster2_image.setAlignmentY(0.0f);
+		cluster2_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster2_image.setBounds(199, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster2_image);
 
@@ -216,6 +217,7 @@ public class GuiInvoker {
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		cluster3_image.setBorder(new LineBorder(Color.BLACK));
 		cluster3_image.setAlignmentY(0.0f);
+		cluster3_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster3_image.setBounds(329, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster3_image);
 
@@ -228,6 +230,7 @@ public class GuiInvoker {
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		cluster4_image.setBorder(new LineBorder(Color.BLACK));
 		cluster4_image.setAlignmentY(0.0f);
+		cluster4_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster4_image.setBounds(458, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster4_image);
 
@@ -240,6 +243,7 @@ public class GuiInvoker {
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		cluster5_image.setBorder(new LineBorder(Color.BLACK));
 		cluster5_image.setAlignmentY(0.0f);
+		cluster5_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster5_image.setBounds(591, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster5_image);
 
