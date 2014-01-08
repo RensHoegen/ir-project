@@ -1,4 +1,4 @@
-package ir_project.gui.components;
+package ir_project_baseline.gui.components;
 
 import ir_project.io.ImageSummaryReference;
 
