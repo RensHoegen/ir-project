@@ -43,6 +43,9 @@ public class GuiInvoker {
 	private JFrame frmClusteredImageRetrieval;
 	private JLabel statusbar;
 	private ImageSummaryReference imageReference;
+	private List<Multimap<Integer, Integer>> pathBar = new ArrayList<Multimap<Integer, Integer>>();
+	private List<Integer> pathBarImages = new ArrayList<Integer>();
+	private int imageToFind;
 
 	/**
 	 * Launch the application.
@@ -99,6 +102,7 @@ public class GuiInvoker {
 					.findClusterRepresentation(imageReference
 							.getImageSummaries(cluster)));
 		}
+		pathBar.add(clusters);
 
 		frmClusteredImageRetrieval = new JFrame();
 		frmClusteredImageRetrieval.getContentPane().setBackground(
@@ -178,7 +182,7 @@ public class GuiInvoker {
 		arrow4.setBounds(547, 24, 32, 31);
 		frmClusteredImageRetrieval.getContentPane().add(arrow4);
 
-		JLabel cluster1_image = new JLabel("1");
+		JButton cluster1_image = new JButton("");
 		cluster1_image.setBounds(70, 6, 66, 66);
 		cluster1_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -191,7 +195,7 @@ public class GuiInvoker {
 		cluster1_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(cluster1_image);
 
-		JLabel cluster2_image = new JLabel("2");
+		JButton cluster2_image = new JButton("");
 		cluster2_image.setPreferredSize(new Dimension(60, 60));
 		cluster2_image.setIconTextGap(10);
 		cluster2_image.setIcon(new ImageIcon(GuiInvoker.class
@@ -203,7 +207,7 @@ public class GuiInvoker {
 		cluster2_image.setBounds(199, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster2_image);
 
-		JLabel cluster3_image = new JLabel("3");
+		JButton cluster3_image = new JButton("");
 		cluster3_image.setPreferredSize(new Dimension(60, 60));
 		cluster3_image.setIconTextGap(10);
 		cluster3_image.setIcon(new ImageIcon(GuiInvoker.class
@@ -215,7 +219,7 @@ public class GuiInvoker {
 		cluster3_image.setBounds(329, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster3_image);
 
-		JLabel cluster4_image = new JLabel("4");
+		JButton cluster4_image = new JButton("");
 		cluster4_image.setPreferredSize(new Dimension(60, 60));
 		cluster4_image.setIconTextGap(10);
 		cluster4_image.setIcon(new ImageIcon(GuiInvoker.class
@@ -227,7 +231,7 @@ public class GuiInvoker {
 		cluster4_image.setBounds(458, 6, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster4_image);
 
-		JLabel cluster5_image = new JLabel("5");
+		JButton cluster5_image = new JButton("");
 		cluster5_image.setPreferredSize(new Dimension(60, 60));
 		cluster5_image.setIconTextGap(10);
 		cluster5_image.setIcon(new ImageIcon(GuiInvoker.class
@@ -406,12 +410,14 @@ public class GuiInvoker {
 		JButton[] imagebuttons = { image_1, image_2, image_3, image_4, image_5,
 				image_6, image_7, image_8, image_9, image_10, image_11,
 				image_12, image_13, image_14, image_15, image_16 };
+		JButton[] pathBarButtons = { cluster1_image, cluster2_image,
+				cluster3_image, cluster4_image, cluster5_image };
 
-		updateImageButtons(clusters, clusterCentroids, imagebuttons);
+		updateImageButtons(clusters, clusterCentroids, imagebuttons,
+				pathBarButtons);
 
-		JLabel search_image = new JLabel("search image");
-		search_image.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("search_image.png")));
+		search_image = new JLabel("search image");
+
 		search_image.setPreferredSize(new Dimension(308, 309));
 		search_image.setIconTextGap(10);
 		search_image
@@ -421,29 +427,31 @@ public class GuiInvoker {
 		search_image.setBounds(845, 42, 308, 309);
 		frmClusteredImageRetrieval.getContentPane().add(search_image);
 
+		randomizeImageToFind();
+
 		// Handlerclass3 cluster1_handler = new Handlerclass3();
 
 		JButton cluster1 = new JButton("");
 		cluster1.setHorizontalAlignment(SwingConstants.LEFT);
 		cluster1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster1.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster1_normal.png")));
+		// cluster1.setIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster1_normal.png")));
 		cluster1.setPreferredSize(new Dimension(557, 66));
 		cluster1.setIconTextGap(10);
 		cluster1.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
 		cluster1.setAlignmentY(0.0f);
 		cluster1.setBounds(880, 433, 300, 66);
 		cluster1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		cluster1.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster1_over.png")));
-		cluster1.setPressedIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster1_over.png")));
+		// cluster1.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster1_over.png")));
+		// cluster1.setPressedIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster1_over.png")));
 
 		JButton cluster2 = new JButton("");
 		cluster2.setHorizontalAlignment(SwingConstants.LEFT);
 		cluster2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster2.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster2_normal.png")));
+		// cluster2.setIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster2_normal.png")));
 		cluster2.setPreferredSize(new Dimension(557, 66));
 		cluster2.setIconTextGap(10);
 		cluster2.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
@@ -451,16 +459,16 @@ public class GuiInvoker {
 		cluster2.setAlignmentY(0.0f);
 		cluster2.setBounds(880, 499, 300, 66);
 		cluster2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		cluster2.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster2_over.png")));
-		cluster2.setPressedIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster2_over.png")));
+		// cluster2.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster2_over.png")));
+		// cluster2.setPressedIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster2_over.png")));
 
 		JButton cluster3 = new JButton("");
 		cluster3.setHorizontalAlignment(SwingConstants.LEFT);
 		cluster3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster3.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster3_normal.png")));
+		// cluster3.setIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster3_normal.png")));
 		cluster3.setPreferredSize(new Dimension(557, 66));
 		cluster3.setIconTextGap(10);
 		cluster3.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
@@ -469,16 +477,16 @@ public class GuiInvoker {
 		cluster3.setAlignmentY(0.0f);
 		cluster3.setBounds(880, 565, 300, 66);
 		cluster3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		cluster3.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster3_over.png")));
-		cluster3.setPressedIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster3_over.png")));
+		// cluster3.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster3_over.png")));
+		// cluster3.setPressedIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster3_over.png")));
 
 		JButton cluster4 = new JButton("");
 		cluster4.setHorizontalAlignment(SwingConstants.LEFT);
 		cluster4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster4.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster4_normal.png")));
+		// cluster4.setIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster4_normal.png")));
 		cluster4.setPreferredSize(new Dimension(557, 66));
 		cluster4.setIconTextGap(10);
 		cluster4.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
@@ -486,16 +494,16 @@ public class GuiInvoker {
 		cluster4.setAlignmentY(0.0f);
 		cluster4.setBounds(880, 631, 300, 66);
 		cluster4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		cluster4.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster4_over.png")));
-		cluster4.setPressedIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster4_over.png")));
+		// cluster4.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster4_over.png")));
+		// cluster4.setPressedIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster4_over.png")));
 
 		JButton cluster5 = new JButton("");
 		cluster5.setHorizontalAlignment(SwingConstants.LEFT);
 		cluster5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster5.setIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster5_normal.png")));
+		// cluster5.setIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster5_normal.png")));
 		cluster5.setPreferredSize(new Dimension(557, 66));
 		cluster5.setIconTextGap(10);
 		cluster5.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
@@ -503,10 +511,10 @@ public class GuiInvoker {
 		cluster5.setAlignmentY(0.0f);
 		cluster5.setBounds(880, 697, 300, 66);
 		cluster5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		cluster5.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster5_over.png")));
-		cluster5.setPressedIcon(new ImageIcon(GuiInvoker.class
-				.getResource("cluster5_over.png")));
+		// cluster5.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster5_over.png")));
+		// cluster5.setPressedIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("cluster5_over.png")));
 
 		// frmClusteredImageRetrieval.getContentPane().add(cluster1);
 		// frmClusteredImageRetrieval.getContentPane().add(cluster2);
@@ -712,12 +720,28 @@ public class GuiInvoker {
 		frmClusteredImageRetrieval.setVisible(true);
 	}
 
+	private void randomizeImageToFind() {
+		imageToFind = (int) (Math.random() * imageReference.size());
+		search_image.setIcon(new ImageIcon(new ImageIcon(new File(IMG_DIR, "im"
+				+ (imageToFind + 1) + ".jpg").getAbsolutePath()).getImage()
+				.getScaledInstance(309, 309, java.awt.Image.SCALE_SMOOTH)));
+	}
+
+	private boolean imageButtonsAreLocked = false;
+	private JLabel search_image;
+
 	private void updateImageButtons(Multimap<Integer, Integer> clusters,
-			List<Integer> clusterCentroids, final JButton[] imagebuttons) {
-		class Handlerclass implements MouseListener {
+			List<Integer> clusterCentroids, final JButton[] imagebuttons,
+			final JButton[] pathBarButtons) {
+		class ImageButtonHandlerclass implements MouseListener {
 			private Collection<Integer> cluster;
+			private int clusterImage;
 
 			public void mouseClicked(MouseEvent event) {
+				if (imageButtonsAreLocked) {
+					return;
+				}
+				imageButtonsAreLocked = true;
 				Map<Integer, ImageSummary> imageReferenceMap = imageReference
 						.getImageSummaries(cluster);
 				Multimap<Integer, Integer> clusters = ClusteringUtils
@@ -728,7 +752,11 @@ public class GuiInvoker {
 							.findClusterRepresentation(imageReference
 									.getImageSummaries(cluster)));
 				}
-				updateImageButtons(clusters, clusterCentroids, imagebuttons);
+				pathBar.add(clusters);
+				pathBarImages.add(clusterImage);
+				updateImageButtons(clusters, clusterCentroids, imagebuttons,
+						pathBarButtons);
+				imageButtonsAreLocked = false;
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -746,7 +774,6 @@ public class GuiInvoker {
 			public void mouseExited(MouseEvent event) {
 				// Ignore.
 			}
-
 		}
 
 		for (int i = 0; i < imagebuttons.length; i++) {
@@ -759,11 +786,68 @@ public class GuiInvoker {
 						IMG_DIR, "im" + (clusterCentroids.get(i) + 1) + ".jpg")
 						.getAbsolutePath()).getImage().getScaledInstance(150,
 						150, java.awt.Image.SCALE_SMOOTH)));
-				Handlerclass handler1 = new Handlerclass();
+				ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
 				handler1.cluster = clusters.get(i);
+				handler1.clusterImage = clusterCentroids.get(i);
 				imagebuttons[i].addMouseListener(handler1);
 			} else {
 				imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
+						.getResource("not_available.png")));
+			}
+		}
+
+		class PathBarButtonHandlerclass implements MouseListener {
+			private Multimap<Integer, Integer> clusters;
+			private int position;
+
+			public void mouseClicked(MouseEvent event) {
+				while (pathBar.size() > position + 1) {
+					pathBar.remove(pathBar.size() - 1);
+					pathBarImages.remove(pathBarImages.size() - 1);
+				}
+				List<Integer> clusterCentroids = new ArrayList<Integer>();
+				for (Collection<Integer> cluster : clusters.asMap().values()) {
+					clusterCentroids.add(ClusteringUtils
+							.findClusterRepresentation(imageReference
+									.getImageSummaries(cluster)));
+				}
+				updateImageButtons(clusters, clusterCentroids, imagebuttons,
+						pathBarButtons);
+			}
+
+			public void mousePressed(MouseEvent event) {
+				// Ignore.
+			}
+
+			public void mouseReleased(MouseEvent event) {
+				// Ignore.
+			}
+
+			public void mouseEntered(MouseEvent event) {
+				// Ignore.
+			}
+
+			public void mouseExited(MouseEvent event) {
+				// Ignore.
+			}
+		}
+
+		for (int i = 0; i < pathBarButtons.length; i++) {
+			for (MouseListener mouseListener : pathBarButtons[i]
+					.getMouseListeners()) {
+				pathBarButtons[i].removeMouseListener(mouseListener);
+			}
+			if (pathBarImages.size() > i) {
+				pathBarButtons[i].setIcon(new ImageIcon(new ImageIcon(new File(
+						IMG_DIR, "im" + (pathBarImages.get(i) + 1) + ".jpg")
+						.getAbsolutePath()).getImage().getScaledInstance(150,
+						150, java.awt.Image.SCALE_SMOOTH)));
+				PathBarButtonHandlerclass handler1 = new PathBarButtonHandlerclass();
+				handler1.clusters = pathBar.get(i);
+				handler1.position = i;
+				pathBarButtons[i].addMouseListener(handler1);
+			} else {
+				pathBarButtons[i].setIcon(new ImageIcon(GuiInvoker.class
 						.getResource("not_available.png")));
 			}
 		}
