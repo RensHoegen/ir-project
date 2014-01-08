@@ -742,20 +742,23 @@ public class GuiInvoker {
 					return;
 				}
 				imageButtonsAreLocked = true;
-				Map<Integer, ImageSummary> imageReferenceMap = imageReference
-						.getImageSummaries(cluster);
-				Multimap<Integer, Integer> clusters = ClusteringUtils
-						.createClusters(imageReferenceMap);
-				List<Integer> clusterCentroids = new ArrayList<Integer>();
-				for (Collection<Integer> cluster : clusters.asMap().values()) {
-					clusterCentroids.add(ClusteringUtils
-							.findClusterRepresentation(imageReference
-									.getImageSummaries(cluster)));
+				if (cluster.size() > 1) {
+					Map<Integer, ImageSummary> imageReferenceMap = imageReference
+							.getImageSummaries(cluster);
+					Multimap<Integer, Integer> clusters = ClusteringUtils
+							.createClusters(imageReferenceMap);
+					List<Integer> clusterCentroids = new ArrayList<Integer>();
+					for (Collection<Integer> cluster : clusters.asMap()
+							.values()) {
+						clusterCentroids.add(ClusteringUtils
+								.findClusterRepresentation(imageReference
+										.getImageSummaries(cluster)));
+					}
+					pathBar.add(clusters);
+					pathBarImages.add(clusterImage);
+					updateImageButtons(clusters, clusterCentroids,
+							imagebuttons, pathBarButtons);
 				}
-				pathBar.add(clusters);
-				pathBarImages.add(clusterImage);
-				updateImageButtons(clusters, clusterCentroids, imagebuttons,
-						pathBarButtons);
 				imageButtonsAreLocked = false;
 			}
 
