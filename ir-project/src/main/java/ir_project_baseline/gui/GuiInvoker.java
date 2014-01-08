@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 //import java.awt.event.MouseEvent;
 //import java.awt.event.MouseListener;
 //import java.awt.event.MouseMotionListener;
@@ -19,6 +21,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
@@ -70,32 +74,74 @@ public class GuiInvoker {
 				new Font("Century Gothic", Font.PLAIN, 16));
 
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
+		
+		final ColorChooserDemo colorPicker = new ColorChooserDemo();
+		colorPicker.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		colorPicker.setPreferredSize(new Dimension(557, 66));
+		colorPicker.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
+		
+		colorPicker.setAlignmentY(0.0f);
+		colorPicker.setBounds(750, 425, 500, 250);
+		colorPicker.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		frmClusteredImageRetrieval.getContentPane().add(colorPicker);
+	
 
-		// Handlerclass2 handler2 = new Handlerclass2();
-		// JButton btnQuit = new JButton("");
-		// btnQuit.setIcon(new
-		// ImageIcon(GuiInvoker.class.getResource("quit.png")));
-		// btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("quit_over.png")));
-		// btnQuit.setBounds(1224, 6, 50, 50);
-		// btnQuit.setBorderPainted(false);
-		// btnQuit.setContentAreaFilled(false);
-		// btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// frmClusteredImageRetrieval.getContentPane().add(btnQuit);
-		// btnQuit.addMouseListener(handler2);
-		// btnQuit.addMouseMotionListener(handler2);
-
-		statusbar = new JLabel("");
-		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
-		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		statusbar.setBounds(845, 358, 308, 45);
-		statusbar.setPreferredSize(new Dimension(150, 150));
-		statusbar.setText("Find this image!");
-		frmClusteredImageRetrieval.getContentPane().add(statusbar);
-
-		// Handlerclass handler = new Handlerclass();
-
+		
+		final JButton colorPickerB1 = new JButton("Pick Color 1");
+		colorPickerB1.setBounds(725, 700, 105, 50);
+		frmClusteredImageRetrieval.getContentPane().add(colorPickerB1);
+		
+		colorPickerB1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            colorPickerB1.setBackground(colorPicker.getColor());	            
+	        }
+		});
+		
+		final JButton colorPickerB2 = new JButton("Pick Color 2");
+		colorPickerB2.setBounds(850, 700, 105, 50);
+		frmClusteredImageRetrieval.getContentPane().add(colorPickerB2);
+		
+		colorPickerB2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            colorPickerB2.setBackground(colorPicker.getColor());	            
+	        }
+		});
+		
+		final JButton colorPickerB3 = new JButton("Pick Color 3");
+		colorPickerB3.setBounds(975, 700, 105, 50);
+		frmClusteredImageRetrieval.getContentPane().add(colorPickerB3);
+		
+		colorPickerB3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            colorPickerB3.setBackground(colorPicker.getColor());	            
+	        }
+		});
+		
+		final JButton colorPickerB4 = new JButton("Pick Color 4");
+		colorPickerB4.setBounds(1100, 700, 105, 50);
+		frmClusteredImageRetrieval.getContentPane().add(colorPickerB4);
+		
+		colorPickerB4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            colorPickerB4.setBackground(colorPicker.getColor());	            
+	        }
+		});
+		
+		final JButton colorPickerB5 = new JButton("Pick Color 5");
+		colorPickerB5.setBounds(1225, 700, 105, 50);
+		frmClusteredImageRetrieval.getContentPane().add(colorPickerB5);
+		
+		colorPickerB5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            colorPickerB5.setBackground(colorPicker.getColor());	            
+	        }
+		});
+		
 		
 
 		JLabel arrow1 = new JLabel("next");
@@ -702,6 +748,8 @@ public class GuiInvoker {
 		background.setAlignmentY(0.0f);
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
+		
+		
 		
 		//background.addMouseListener(handler);
 		//background.addMouseMotionListener(handler);
