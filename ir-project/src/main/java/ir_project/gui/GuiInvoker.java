@@ -25,6 +25,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 public class GuiInvoker {
 
@@ -74,18 +75,19 @@ public class GuiInvoker {
 
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
 
-		Handlerclass2 handler2 = new Handlerclass2();
-		JButton btnQuit = new JButton("");
-		btnQuit.setIcon(new ImageIcon(GuiInvoker.class.getResource("quit.png")));
-		btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
-				.getResource("quit_over.png")));
-		btnQuit.setBounds(1224, 6, 50, 50);
-		btnQuit.setBorderPainted(false);
-		btnQuit.setContentAreaFilled(false);
-		btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		frmClusteredImageRetrieval.getContentPane().add(btnQuit);
-		btnQuit.addMouseListener(handler2);
-		btnQuit.addMouseMotionListener(handler2);
+		// Handlerclass2 handler2 = new Handlerclass2();
+		// JButton btnQuit = new JButton("");
+		// btnQuit.setIcon(new
+		// ImageIcon(GuiInvoker.class.getResource("quit.png")));
+		// btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
+		// .getResource("quit_over.png")));
+		// btnQuit.setBounds(1224, 6, 50, 50);
+		// btnQuit.setBorderPainted(false);
+		// btnQuit.setContentAreaFilled(false);
+		// btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		// frmClusteredImageRetrieval.getContentPane().add(btnQuit);
+		// btnQuit.addMouseListener(handler2);
+		// btnQuit.addMouseMotionListener(handler2);
 
 		statusbar = new JLabel("");
 		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -295,7 +297,7 @@ public class GuiInvoker {
 				.getResource("active_cluster.png")));
 		cluster1_image.setIconTextGap(10);
 		cluster1_image.setPreferredSize(new Dimension(60, 60));
-		cluster1_image.setBorder(new LineBorder(new Color(64, 64, 64)));
+		cluster1_image.setBorder(new LineBorder(new Color(0, 0, 0)));
 		cluster1_image.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(cluster1_image);
 
@@ -308,9 +310,9 @@ public class GuiInvoker {
 				.getResource("cluster1_normal.png")));
 		cluster1.setPreferredSize(new Dimension(557, 66));
 		cluster1.setIconTextGap(10);
-		cluster1.setBorder(null);
+		cluster1.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
 		cluster1.setAlignmentY(0.0f);
-		cluster1.setBounds(880, 433, 400, 66);
+		cluster1.setBounds(880, 433, 300, 66);
 		cluster1.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster1.setRolloverIcon(new ImageIcon(GuiInvoker.class
 				.getResource("cluster1_over.png")));
@@ -324,7 +326,7 @@ public class GuiInvoker {
 				.getResource("active_cluster.png")));
 		cluster2_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster2_image.setBorder(new LineBorder(new Color(64, 64, 64)));
+		cluster2_image.setBorder(new LineBorder(Color.BLACK));
 		cluster2_image.setAlignmentY(0.0f);
 		cluster2_image.setBounds(814, 499, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster2_image);
@@ -336,9 +338,10 @@ public class GuiInvoker {
 				.getResource("cluster2_normal.png")));
 		cluster2.setPreferredSize(new Dimension(557, 66));
 		cluster2.setIconTextGap(10);
-		cluster2.setBorder(null);
+		cluster2.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
+				0)));
 		cluster2.setAlignmentY(0.0f);
-		cluster2.setBounds(880, 499, 400, 66);
+		cluster2.setBounds(880, 499, 300, 66);
 		cluster2.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster2.setRolloverIcon(new ImageIcon(GuiInvoker.class
 				.getResource("cluster2_over.png")));
@@ -352,7 +355,7 @@ public class GuiInvoker {
 				.getResource("active_cluster.png")));
 		cluster3_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster3_image.setBorder(new LineBorder(new Color(64, 64, 64)));
+		cluster3_image.setBorder(new LineBorder(Color.BLACK));
 		cluster3_image.setAlignmentY(0.0f);
 		cluster3_image.setBounds(814, 565, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster3_image);
@@ -364,9 +367,11 @@ public class GuiInvoker {
 				.getResource("cluster3_normal.png")));
 		cluster3.setPreferredSize(new Dimension(557, 66));
 		cluster3.setIconTextGap(10);
-		cluster3.setBorder(null);
+		cluster3.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
+				0)));
+
 		cluster3.setAlignmentY(0.0f);
-		cluster3.setBounds(880, 565, 400, 66);
+		cluster3.setBounds(880, 565, 300, 66);
 		cluster3.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster3.setRolloverIcon(new ImageIcon(GuiInvoker.class
 				.getResource("cluster3_over.png")));
@@ -380,7 +385,7 @@ public class GuiInvoker {
 				.getResource("active_cluster.png")));
 		cluster4_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster4_image.setBorder(new LineBorder(new Color(64, 64, 64)));
+		cluster4_image.setBorder(new LineBorder(Color.BLACK));
 		cluster4_image.setAlignmentY(0.0f);
 		cluster4_image.setBounds(814, 631, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster4_image);
@@ -392,9 +397,10 @@ public class GuiInvoker {
 				.getResource("cluster4_normal.png")));
 		cluster4.setPreferredSize(new Dimension(557, 66));
 		cluster4.setIconTextGap(10);
-		cluster4.setBorder(null);
+		cluster4.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
+
 		cluster4.setAlignmentY(0.0f);
-		cluster4.setBounds(880, 631, 400, 66);
+		cluster4.setBounds(880, 631, 300, 66);
 		cluster4.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster4.setRolloverIcon(new ImageIcon(GuiInvoker.class
 				.getResource("cluster4_over.png")));
@@ -408,7 +414,7 @@ public class GuiInvoker {
 				.getResource("active_cluster.png")));
 		cluster5_image
 				.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		cluster5_image.setBorder(new LineBorder(new Color(64, 64, 64)));
+		cluster5_image.setBorder(new LineBorder(Color.BLACK));
 		cluster5_image.setAlignmentY(0.0f);
 		cluster5_image.setBounds(814, 697, 66, 66);
 		frmClusteredImageRetrieval.getContentPane().add(cluster5_image);
@@ -420,9 +426,10 @@ public class GuiInvoker {
 				.getResource("cluster5_normal.png")));
 		cluster5.setPreferredSize(new Dimension(557, 66));
 		cluster5.setIconTextGap(10);
-		cluster5.setBorder(null);
+		cluster5.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
+
 		cluster5.setAlignmentY(0.0f);
-		cluster5.setBounds(880, 697, 400, 66);
+		cluster5.setBounds(880, 697, 300, 66);
 		cluster5.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		cluster5.setRolloverIcon(new ImageIcon(GuiInvoker.class
 				.getResource("cluster5_over.png")));
@@ -512,36 +519,37 @@ public class GuiInvoker {
 
 	}
 
-	private class Handlerclass2 implements MouseListener, MouseMotionListener {
-		public void mouseClicked(MouseEvent event) {
+	// private class Handlerclass2 implements MouseListener, MouseMotionListener
+	// {
+	// public void mouseClicked(MouseEvent event) {
 
-		}
+	// }
 
-		public void mousePressed(MouseEvent event) {
+	// public void mousePressed(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseReleased(MouseEvent event) {
-			System.exit(0);
-		}
+	// public void mouseReleased(MouseEvent event) {
+	// System.exit(0);
+	// }
 
-		public void mouseEntered(MouseEvent event) {
+	// public void mouseEntered(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseExited(MouseEvent event) {
+	// public void mouseExited(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseDragged(MouseEvent event) {
+	// public void mouseDragged(MouseEvent event) {
 
-		}
+	// }
 
-		public void mouseMoved(MouseEvent event) {
+	// public void mouseMoved(MouseEvent event) {
 
-		}
+	// }
 
-	}
+	// }
 
 	private class Handlerclass3 implements MouseListener, MouseMotionListener {
 		public void mouseClicked(MouseEvent event) {
