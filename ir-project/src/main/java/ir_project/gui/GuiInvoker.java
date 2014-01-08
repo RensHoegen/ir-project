@@ -32,7 +32,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
+
 
 import com.google.common.collect.Multimap;
 
@@ -433,101 +433,6 @@ public class GuiInvoker {
 
 		randomizeImageToFind();
 
-		// Handlerclass3 cluster1_handler = new Handlerclass3();
-
-		JButton cluster1 = new JButton("");
-		cluster1.setHorizontalAlignment(SwingConstants.LEFT);
-		cluster1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		// cluster1.setIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster1_normal.png")));
-		cluster1.setPreferredSize(new Dimension(557, 66));
-		cluster1.setIconTextGap(10);
-		cluster1.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
-		cluster1.setAlignmentY(0.0f);
-		cluster1.setBounds(880, 433, 300, 66);
-		cluster1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// cluster1.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster1_over.png")));
-		// cluster1.setPressedIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster1_over.png")));
-
-		JButton cluster2 = new JButton("");
-		cluster2.setHorizontalAlignment(SwingConstants.LEFT);
-		cluster2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		// cluster2.setIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster2_normal.png")));
-		cluster2.setPreferredSize(new Dimension(557, 66));
-		cluster2.setIconTextGap(10);
-		cluster2.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
-				0)));
-		cluster2.setAlignmentY(0.0f);
-		cluster2.setBounds(880, 499, 300, 66);
-		cluster2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// cluster2.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster2_over.png")));
-		// cluster2.setPressedIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster2_over.png")));
-
-		JButton cluster3 = new JButton("");
-		cluster3.setHorizontalAlignment(SwingConstants.LEFT);
-		cluster3.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		// cluster3.setIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster3_normal.png")));
-		cluster3.setPreferredSize(new Dimension(557, 66));
-		cluster3.setIconTextGap(10);
-		cluster3.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(0, 0,
-				0)));
-
-		cluster3.setAlignmentY(0.0f);
-		cluster3.setBounds(880, 565, 300, 66);
-		cluster3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// cluster3.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster3_over.png")));
-		// cluster3.setPressedIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster3_over.png")));
-
-		JButton cluster4 = new JButton("");
-		cluster4.setHorizontalAlignment(SwingConstants.LEFT);
-		cluster4.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		// cluster4.setIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster4_normal.png")));
-		cluster4.setPreferredSize(new Dimension(557, 66));
-		cluster4.setIconTextGap(10);
-		cluster4.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
-
-		cluster4.setAlignmentY(0.0f);
-		cluster4.setBounds(880, 631, 300, 66);
-		cluster4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// cluster4.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster4_over.png")));
-		// cluster4.setPressedIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster4_over.png")));
-
-		JButton cluster5 = new JButton("");
-		cluster5.setHorizontalAlignment(SwingConstants.LEFT);
-		cluster5.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		// cluster5.setIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster5_normal.png")));
-		cluster5.setPreferredSize(new Dimension(557, 66));
-		cluster5.setIconTextGap(10);
-		cluster5.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
-
-		cluster5.setAlignmentY(0.0f);
-		cluster5.setBounds(880, 697, 300, 66);
-		cluster5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// cluster5.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster5_over.png")));
-		// cluster5.setPressedIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("cluster5_over.png")));
-
-		// frmClusteredImageRetrieval.getContentPane().add(cluster1);
-		// frmClusteredImageRetrieval.getContentPane().add(cluster2);
-		// frmClusteredImageRetrieval.getContentPane().add(cluster3);
-		// frmClusteredImageRetrieval.getContentPane().add(cluster4);
-		// frmClusteredImageRetrieval.getContentPane().add(cluster5);
-
-		// cluster1.addMouseListener(cluster1_handler);
-		// cluster1.addMouseMotionListener(cluster1_handler);
 
 		JLabel frame1 = new JLabel("frame1");
 		frame1.setIcon(new ImageIcon(GuiInvoker.class.getResource("frame.png")));
@@ -700,8 +605,7 @@ public class GuiInvoker {
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
 
-		// background.addMouseListener(handler);
-		// background.addMouseMotionListener(handler);
+	
 
 		frmClusteredImageRetrieval.setUndecorated(true);
 
@@ -713,13 +617,12 @@ public class GuiInvoker {
 				.getLocalGraphicsEnvironment().getScreenDevices()[0];
 		device.setFullScreenWindow(frmClusteredImageRetrieval);
 
-		// frmClusteredImageRetrieval.setExtendedState(frmClusteredImageRetrieval
-		// .getExtendedState() | Frame.MAXIMIZED_BOTH);
+		
 
 		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
 
 		frmClusteredImageRetrieval.setResizable(false);
-		// frmClusteredImageRetrieval.setSize(width, height);
+
 
 		frmClusteredImageRetrieval.setVisible(true);
 	}
@@ -866,66 +769,3 @@ public class GuiInvoker {
 
 }
 
-// private class Handlerclass2 implements MouseListener, MouseMotionListener
-// {
-// public void mouseClicked(MouseEvent event) {
-
-// }
-
-// public void mousePressed(MouseEvent event) {
-
-// }
-
-// public void mouseReleased(MouseEvent event) {
-// System.exit(0);
-// }
-
-// public void mouseEntered(MouseEvent event) {
-
-// }
-
-// public void mouseExited(MouseEvent event) {
-
-// }
-
-// public void mouseDragged(MouseEvent event) {
-
-// }
-
-// public void mouseMoved(MouseEvent event) {
-
-// }
-
-// }
-
-// private class Handlerclass3 implements MouseListener, MouseMotionListener {
-// public void mouseClicked(MouseEvent event) {
-
-// }
-
-// public void mousePressed(MouseEvent event) {
-
-// }
-
-// public void mouseReleased(MouseEvent event) {
-
-// }
-
-// public void mouseEntered(MouseEvent event) {
-
-// }
-
-// public void mouseExited(MouseEvent event) {
-
-// }
-
-// public void mouseDragged(MouseEvent event) {
-
-// }
-
-// public void mouseMoved(MouseEvent event) {
-
-// }
-
-// }
-// }
