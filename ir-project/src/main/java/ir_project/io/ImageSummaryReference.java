@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ImageSummaryReference implements Serializable {
 	private static final long serialVersionUID = -4948591983304439349L;
@@ -30,7 +33,16 @@ public class ImageSummaryReference implements Serializable {
 	public ImageSummary getImageSummary(int imageIndex) {
 		return imageSummaries[imageIndex];
 	}
-	
+
+	public Map<Integer, ImageSummary> getImageSummaries(
+			Collection<Integer> imageIndexes) {
+		Map<Integer, ImageSummary> imageSummaries = new HashMap<Integer, ImageSummary>();
+		for (int imageIndex : imageIndexes) {
+			imageSummaries.put(imageIndex, getImageSummary(imageIndex));
+		}
+		return imageSummaries;
+	}
+
 	public int size() {
 		return imageSummaries.length;
 	}

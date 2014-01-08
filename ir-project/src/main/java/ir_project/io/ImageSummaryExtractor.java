@@ -17,7 +17,8 @@ public class ImageSummaryExtractor {
 	private static final int NUMBER_OF_AREAS = 1;
 	private static final Color[] COLORS = createReferenceColors();
 
-	public static ImageSummary extractImageSummary(InputStream imageStream) throws IOException {
+	public static ImageSummary extractImageSummary(InputStream imageStream)
+			throws IOException {
 		BufferedImage image = ImageIO.read(imageStream);
 		return extractImageSummaryInternal(image);
 	}
@@ -29,15 +30,16 @@ public class ImageSummaryExtractor {
 		}
 
 		normalizeHistogram(histogram);
-		return new ImageSummary(new ImageAreaSummary[] { new ImageAreaSummary(histogram) });
+		return new ImageSummary(new ImageAreaSummary[] { new ImageAreaSummary(
+				histogram) });
 	}
 
 	private static Color[] createReferenceColors() {
 		List<Color> colors = new ArrayList<Color>();
 
-		colors.add(Color.BLACK);
-		colors.add(Color.WHITE);
-		colors.add(Color.GRAY);
+		// colors.add(Color.BLACK);
+		// colors.add(Color.WHITE);
+		// colors.add(Color.GRAY);
 		for (float h = 0; h < 1.0f; h += 0.05f) {
 			for (float b : new float[] { 0.50f, 0.85f }) {
 				colors.add(Color.getHSBColor(h, 0.75f, b));
@@ -46,22 +48,26 @@ public class ImageSummaryExtractor {
 		return colors.toArray(new Color[0]);
 	}
 
-	public static ImageSummary extractImageSummary(File imageFile) throws IOException {
+	public static ImageSummary extractImageSummary(File imageFile)
+			throws IOException {
 		BufferedImage image = ImageIO.read(imageFile);
 		return extractImageSummaryInternal(image);
 	}
 
 	private static ImageSummary extractImageSummaryInternal(BufferedImage image) {
-		ImageAreaSummary[] areaSummaries = new ImageAreaSummary[NUMBER_OF_AREAS * NUMBER_OF_AREAS];
+		ImageAreaSummary[] areaSummaries = new ImageAreaSummary[NUMBER_OF_AREAS
+				* NUMBER_OF_AREAS];
 		for (int x = 0; x < NUMBER_OF_AREAS; x++) {
 			for (int y = 0; y < NUMBER_OF_AREAS; y++) {
-				areaSummaries[x + y * NUMBER_OF_AREAS] = extractImageAreaSummary(image, x, y);
+				areaSummaries[x + y * NUMBER_OF_AREAS] = extractImageAreaSummary(
+						image, x, y);
 			}
 		}
 		return new ImageSummary(areaSummaries);
 	}
 
-	private static ImageAreaSummary extractImageAreaSummary(BufferedImage image, int areaX, int areaY) {
+	private static ImageAreaSummary extractImageAreaSummary(
+			BufferedImage image, int areaX, int areaY) {
 		int xStart = image.getWidth() * areaX / NUMBER_OF_AREAS;
 		int xEnd = image.getWidth() * (areaX + 1) / NUMBER_OF_AREAS;
 		int yStart = image.getHeight() * areaY / NUMBER_OF_AREAS;
@@ -94,8 +100,9 @@ public class ImageSummaryExtractor {
 		double[] weightPerColor = new double[COLORS.length];
 		double weightSum = 0.0d;
 		for (int i = 0; i < COLORS.length; i++) {
-			double distance = calculateDistanceBetweenColors(COLORS[i], pixelColor) + 1.0e-4;
-			double weight = 1 / distance / distance;
+			double distance = calculateDistanceBetweenColors(COLORS[i],
+					pixelColor) + 1.0e-4;
+			double weight = 1 / distance;
 			weightPerColor[i] = weight;
 			weightSum += weight;
 		}
@@ -104,10 +111,12 @@ public class ImageSummaryExtractor {
 		}
 	}
 
-	private static double calculateDistanceBetweenColors(Color colorA, Color colorB) {
+	private static double calculateDistanceBetweenColors(Color colorA,
+			Color colorB) {
 		int redDiff = colorA.getRed() - colorB.getRed();
 		int greenDiff = colorA.getGreen() - colorB.getGreen();
 		int blueDiff = colorA.getBlue() - colorB.getBlue();
-		return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff * blueDiff);
+		return Math.sqrt(redDiff * redDiff + greenDiff * greenDiff + blueDiff
+				* blueDiff);
 	}
 }
