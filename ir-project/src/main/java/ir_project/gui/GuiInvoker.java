@@ -4,6 +4,7 @@ import ir_project.clustering.ClusteringUtils;
 import ir_project.io.ImageSummaryReference;
 import ir_project.model.ImageSummary;
 
+import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -15,11 +16,16 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.AWTEventListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,6 +36,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -39,13 +46,17 @@ import com.google.common.collect.Multimap;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/Users/Robert/MIRFLICKR_THUMBS/images");
+			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
 	private JFrame frmClusteredImageRetrieval;
 	private JLabel statusbar;
 	private ImageSummaryReference imageReference;
 	private List<Multimap<Integer, Integer>> pathBar = new ArrayList<Multimap<Integer, Integer>>();
 	private List<Integer> pathBarImages = new ArrayList<Integer>();
 	private int imageToFind;
+	private boolean started=false;
+	private JButton startReset;
+	private long startTime;
+	//PrintWriter writer;
 
 	/**
 	 * Launch the application.
@@ -118,7 +129,25 @@ public class GuiInvoker {
 				new Font("Century Gothic", Font.PLAIN, 16));
 
 		frmClusteredImageRetrieval.getContentPane().setLayout(null);
-
+		
+		startReset = new JButton("Start");
+		startReset.setBounds(900, 500, 100, 50);
+		frmClusteredImageRetrieval.getContentPane().add(startReset);
+		startReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            randomizeImageToFind();
+	            if(!started){
+		            startTime=System.currentTimeMillis();
+		            startReset.setText("Reset");
+		            started = true;
+	            }else{
+	            	System.out.println("Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	            	startTime = System.currentTimeMillis();
+	            }
+	        }
+		});
+		
 		// Handlerclass2 handler2 = new Handlerclass2();
 		// JButton btnQuit = new JButton("");
 		// btnQuit.setIcon(new
@@ -431,7 +460,7 @@ public class GuiInvoker {
 		search_image.setBounds(845, 42, 308, 309);
 		frmClusteredImageRetrieval.getContentPane().add(search_image);
 
-		randomizeImageToFind();
+		//randomizeImageToFind();
 
 
 		JLabel frame1 = new JLabel("frame1");
@@ -605,7 +634,8 @@ public class GuiInvoker {
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
 
-	
+		
+		
 
 		frmClusteredImageRetrieval.setUndecorated(true);
 
@@ -616,6 +646,7 @@ public class GuiInvoker {
 		GraphicsDevice device = GraphicsEnvironment
 				.getLocalGraphicsEnvironment().getScreenDevices()[0];
 		device.setFullScreenWindow(frmClusteredImageRetrieval);
+		
 
 		
 
