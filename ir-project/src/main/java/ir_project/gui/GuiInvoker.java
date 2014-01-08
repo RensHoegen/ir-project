@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
 
 import com.google.common.collect.Multimap;
 
@@ -99,10 +97,8 @@ public class GuiInvoker {
 
 		System.out.println("Loading...");
 		imageReference = ImageSummaryReference.loadImageSummary();
-		Map<Integer, ImageSummary> imageReferenceMap = new HashMap<Integer, ImageSummary>();
-		for (int i = 0; i < imageReference.size(); i++) {
-			imageReferenceMap.put(i, imageReference.getImageSummary(i));
-		}
+		Map<Integer, ImageSummary> imageReferenceMap = imageReference
+				.getImageSummaries(imageReference.getListOfAllImages());
 
 		System.out.println("Clustering...");
 		Multimap<Integer, Integer> clusters = ClusteringUtils
@@ -462,7 +458,6 @@ public class GuiInvoker {
 
 		//randomizeImageToFind();
 
-
 		JLabel frame1 = new JLabel("frame1");
 		frame1.setIcon(new ImageIcon(GuiInvoker.class.getResource("frame.png")));
 		frame1.setPreferredSize(new Dimension(170, 170));
@@ -634,8 +629,6 @@ public class GuiInvoker {
 		background.setBounds(0, 0, 1280, 800);
 		frmClusteredImageRetrieval.getContentPane().add(background);
 
-		
-		
 
 		frmClusteredImageRetrieval.setUndecorated(true);
 
@@ -648,18 +641,16 @@ public class GuiInvoker {
 		device.setFullScreenWindow(frmClusteredImageRetrieval);
 		
 
-		
-
 		addComponentsToPane(frmClusteredImageRetrieval.getContentPane());
 
 		frmClusteredImageRetrieval.setResizable(false);
-
 
 		frmClusteredImageRetrieval.setVisible(true);
 	}
 
 	private void randomizeImageToFind() {
-		imageToFind = (int) (Math.random() * imageReference.size());
+		List<Integer> allImages = imageReference.getListOfAllImages();
+		imageToFind = allImages.get((int) (Math.random() * allImages.size()));
 		search_image.setIcon(new ImageIcon(new ImageIcon(new File(IMG_DIR, "im"
 				+ (imageToFind + 1) + ".jpg").getAbsolutePath()).getImage()
 				.getScaledInstance(309, 309, java.awt.Image.SCALE_SMOOTH)));
@@ -780,8 +771,8 @@ public class GuiInvoker {
 			if (pathBarImages.size() > i) {
 				pathBarButtons[i].setIcon(new ImageIcon(new ImageIcon(new File(
 						IMG_DIR, "im" + (pathBarImages.get(i) + 1) + ".jpg")
-						.getAbsolutePath()).getImage().getScaledInstance(150,
-						150, java.awt.Image.SCALE_SMOOTH)));
+						.getAbsolutePath()).getImage().getScaledInstance(64,
+						64, java.awt.Image.SCALE_SMOOTH)));
 				PathBarButtonHandlerclass handler1 = new PathBarButtonHandlerclass();
 				handler1.clusters = pathBar.get(i);
 				handler1.position = i;
@@ -799,4 +790,3 @@ public class GuiInvoker {
 	}
 
 }
-
