@@ -39,7 +39,7 @@ import com.google.common.collect.Multimap;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/home/stefan/Downloads/image_thumbnails");
+			"/Users/Robert/MIRFLICKR_THUMBS/images");
 	private JFrame frmClusteredImageRetrieval;
 	private JLabel statusbar;
 	private ImageSummaryReference imageReference;

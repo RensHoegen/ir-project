@@ -17,7 +17,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -33,7 +32,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
@@ -99,6 +98,14 @@ for (Collection<Integer> cluster : clusters.asMap().values()) {
 pathBar.add(clusters);
 
 		frmClusteredImageRetrieval = new JFrame();
+		
+		 try {
+			    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+			 } catch (Exception e) {
+			            e.printStackTrace();
+			 }
+		
+		
 		frmClusteredImageRetrieval.getContentPane().setBackground(
 				new Color(96, 97, 98));
 		frmClusteredImageRetrieval.getContentPane().setComponentOrientation(
@@ -132,7 +139,9 @@ pathBar.add(clusters);
 		colorPickerB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB1.setBackground(colorPicker.getColor());	            
+	            colorPickerB1.setBackground(colorPicker.getColor());	     
+	            colorPickerB1.setForeground(colorPicker.getColor());	
+	        
 	        }
 		});
 		
@@ -143,7 +152,8 @@ pathBar.add(clusters);
 		colorPickerB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB2.setBackground(colorPicker.getColor());	            
+	            colorPickerB2.setBackground(colorPicker.getColor());
+	            colorPickerB2.setForeground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -154,7 +164,8 @@ pathBar.add(clusters);
 		colorPickerB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB3.setBackground(colorPicker.getColor());	            
+	            colorPickerB3.setBackground(colorPicker.getColor());	  
+	            colorPickerB3.setForeground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -165,7 +176,8 @@ pathBar.add(clusters);
 		colorPickerB4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB4.setBackground(colorPicker.getColor());	            
+	            colorPickerB4.setBackground(colorPicker.getColor());	   
+	            colorPickerB4.setForeground(colorPicker.getColor());	
 	        }
 		});
 		
@@ -176,7 +188,8 @@ pathBar.add(clusters);
 		colorPickerB5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 	        {
-	            colorPickerB5.setBackground(colorPicker.getColor());	            
+	            colorPickerB5.setBackground(colorPicker.getColor());	    
+	            colorPickerB5.setForeground(colorPicker.getColor());	
 	        }
 		});
 		
