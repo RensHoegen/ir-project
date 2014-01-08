@@ -17,7 +17,7 @@ public class ImageSummary implements Serializable {
 
 		public double distanceTo(ImageAreaSummary other) {
 			double distanceSum = 0.0d;
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < histogram.length; i++) {
 				distanceSum += Math.pow(histogram[i] - other.histogram[i], 2)
 						/ (histogram[i] + other.histogram[i] + 1.0e-16);
 			}
