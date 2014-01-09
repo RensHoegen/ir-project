@@ -22,7 +22,9 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -494,30 +496,43 @@ public class GuiInvoker {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB1.setBackground(colorPicker.getColor());
 				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_1:"+ colorPickerB1.getBackground() + " | " + timeLog);
 			}
 		});
 		colorPickerB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB2.setBackground(colorPicker.getColor());
 				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_2:"+ colorPickerB2.getBackground() + " | " + timeLog);
 			}
 		});
 		colorPickerB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB3.setBackground(colorPicker.getColor());
 				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_3:"+ colorPickerB3.getBackground() + " | " + timeLog);
+
 			}
 		});
 		colorPickerB4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB4.setBackground(colorPicker.getColor());
 				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_4:"+ colorPickerB4.getBackground() + " | " + timeLog);
+
 			}
 		});
 		colorPickerB5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB5.setBackground(colorPicker.getColor());
 				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_5:"+ colorPickerB5.getBackground() + " | " + timeLog);
+
 			}
 		});
 
@@ -801,6 +816,10 @@ public class GuiInvoker {
 				while (pathBar.size() > position) {
 					pathBar.remove(pathBar.size() - 1);
 					pathBarImages.remove(pathBarImages.size() - 1);
+					
+					 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					 System.out.println("3. Pathbar button "+ String.format("at position: %d,%d | ", event.getX(),
+                            event.getY()) + timeLog);
 				}
 				for (int i = 0; i < colorPickers.length; i++) {
 					colorPickers[i].setBackground(colors[i]);
