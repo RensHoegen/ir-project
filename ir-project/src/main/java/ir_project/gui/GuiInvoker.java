@@ -4,7 +4,6 @@ import ir_project.clustering.ClusteringUtils;
 import ir_project.io.ImageSummaryReference;
 import ir_project.model.ImageSummary;
 
-import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -16,8 +15,6 @@ import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.SystemColor;
-import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -25,8 +22,9 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +33,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -140,13 +137,19 @@ public class GuiInvoker {
 		            startTime=System.currentTimeMillis();
 		            startReset.setText("Reset");
 		            started = true;
+		       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+		   				 System.out.println("0. Start pushed "+ timeLog);
 	            }else{
-	            	System.out.println("Reset after " + (System.currentTimeMillis()-startTime) + "ms");
 	            	
+	            	System.out.println("1.Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	          
+			       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					 System.out.println("1. Reset pushed "+ timeLog);
 	            	int position = 0;
 	            	while (pathBar.size() > position + 1) {
 						pathBar.remove(pathBar.size() - 1);
 						pathBarImages.remove(pathBarImages.size() - 1);
+						
 					}
 					List<Integer> clusterCentroids = new ArrayList<Integer>();
 					for (Collection<Integer> cluster : clusters.asMap().values()) {
@@ -701,6 +704,9 @@ public class GuiInvoker {
 				pathBarImages.add(clusterImage);
 				updateImageButtons(clusters, clusterCentroids);
 				imageButtonsAreLocked = false;
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+				 System.out.println("2. Cluster image pushed "+ String.format("at position: %d,%d | ", event.getX(),event.getY()) + timeLog);
+
 				
 			}
 
@@ -771,6 +777,10 @@ public class GuiInvoker {
 				while (pathBar.size() > position + 1) {
 					pathBar.remove(pathBar.size() - 1);
 					pathBarImages.remove(pathBarImages.size() - 1);
+					 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					 System.out.println("3. Pathbar button "+ String.format("at position: %d,%d | ", event.getX(),
+                             event.getY()) + timeLog);
+
 				}
 				List<Integer> clusterCentroids = new ArrayList<Integer>();
 				for (Collection<Integer> cluster : clusters.asMap().values()) {
