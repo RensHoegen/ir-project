@@ -55,6 +55,9 @@ public class GuiInvoker {
 	private JButton startReset;
 	private long startTime;
 	//PrintWriter writer;
+	
+	private JButton[] imagebuttons;
+	private JButton[] pathBarButtons;
 
 	/**
 	 * Launch the application.
@@ -101,7 +104,7 @@ public class GuiInvoker {
 				.getImageSummaries(imageReference.getListOfAllImages());
 
 		System.out.println("Clustering...");
-		Multimap<Integer, Integer> clusters = ClusteringUtils
+		final Multimap<Integer, Integer> clusters = ClusteringUtils
 				.createClusters(imageReferenceMap);
 		List<Integer> clusterCentroids = new ArrayList<Integer>();
 		for (Collection<Integer> cluster : clusters.asMap().values()) {
@@ -139,6 +142,21 @@ public class GuiInvoker {
 		            started = true;
 	            }else{
 	            	System.out.println("Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	            	
+	            	int position = 0;
+	            	while (pathBar.size() > position + 1) {
+						pathBar.remove(pathBar.size() - 1);
+						pathBarImages.remove(pathBarImages.size() - 1);
+					}
+					List<Integer> clusterCentroids = new ArrayList<Integer>();
+					for (Collection<Integer> cluster : clusters.asMap().values()) {
+						clusterCentroids.add(ClusteringUtils
+								.findClusterRepresentation(imageReference
+										.getImageSummaries(cluster)));
+					}
+					
+					updateImageButtons(clusters, clusterCentroids);
+					
 	            	startTime = System.currentTimeMillis();
 	            }
 	        }
@@ -436,14 +454,13 @@ public class GuiInvoker {
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-		JButton[] imagebuttons = { image_1, image_2, image_3, image_4, image_5,
+		imagebuttons = new JButton[]{ image_1, image_2, image_3, image_4, image_5,
 				image_6, image_7, image_8, image_9, image_10, image_11,
 				image_12, image_13, image_14, image_15, image_16 };
-		JButton[] pathBarButtons = { cluster1_image, cluster2_image,
+		pathBarButtons = new JButton[]{ cluster1_image, cluster2_image,
 				cluster3_image, cluster4_image, cluster5_image };
 
-		updateImageButtons(clusters, clusterCentroids, imagebuttons,
-				pathBarButtons);
+		updateImageButtons(clusters, clusterCentroids);
 
 		search_image = new JLabel("search image");
 
@@ -660,8 +677,7 @@ public class GuiInvoker {
 	private JLabel search_image;
 
 	private void updateImageButtons(Multimap<Integer, Integer> clusters,
-			List<Integer> clusterCentroids, final JButton[] imagebuttons,
-			final JButton[] pathBarButtons) {
+			List<Integer> clusterCentroids) {
 		class ImageButtonHandlerclass implements MouseListener {
 			private Collection<Integer> cluster;
 			private int clusterImage;
@@ -671,7 +687,7 @@ public class GuiInvoker {
 					return;
 				}
 				imageButtonsAreLocked = true;
-				Map<Integer, ImageSummary> imageReferenceMap = imageReference
+				Map<Integer, ImageSummary> imageReferenceMap = imageReference 
 						.getImageSummaries(cluster);
 				Multimap<Integer, Integer> clusters = ClusteringUtils
 						.createClusters(imageReferenceMap);
@@ -683,9 +699,9 @@ public class GuiInvoker {
 				}
 				pathBar.add(clusters);
 				pathBarImages.add(clusterImage);
-				updateImageButtons(clusters, clusterCentroids, imagebuttons,
-						pathBarButtons);
+				updateImageButtons(clusters, clusterCentroids);
 				imageButtonsAreLocked = false;
+				
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -720,6 +736,26 @@ public class GuiInvoker {
 					handler1.cluster = clusters.get(i);
 					handler1.clusterImage = clusterCentroids.get(i);
 					imagebuttons[i].addMouseListener(handler1);
+				}else if(imageToFind==clusterCentroids.get(0)){
+					System.out.println("Found picture after"+ (System.currentTimeMillis()-startTime) + "ms");
+					
+					int position = 0;
+	            	while (pathBar.size() > position + 1) {
+						pathBar.remove(pathBar.size() - 1);
+						pathBarImages.remove(pathBarImages.size() - 1);
+					}
+					clusterCentroids = new ArrayList<Integer>();
+					for (Collection<Integer> cluster : clusters.asMap().values()) {
+						clusterCentroids.add(ClusteringUtils
+								.findClusterRepresentation(imageReference
+										.getImageSummaries(cluster)));
+					}
+					clusters = pathBar.get(0);
+					updateImageButtons(clusters, clusterCentroids);
+					
+					randomizeImageToFind();
+	            	startTime = System.currentTimeMillis();
+	            	return;
 				}
 			} else {
 				imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
@@ -742,8 +778,7 @@ public class GuiInvoker {
 							.findClusterRepresentation(imageReference
 									.getImageSummaries(cluster)));
 				}
-				updateImageButtons(clusters, clusterCentroids, imagebuttons,
-						pathBarButtons);
+				updateImageButtons(clusters, clusterCentroids);
 			}
 
 			public void mousePressed(MouseEvent event) {
