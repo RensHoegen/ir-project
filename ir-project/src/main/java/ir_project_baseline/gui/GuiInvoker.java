@@ -39,7 +39,7 @@ import javax.swing.border.MatteBorder;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
+			"/Users/Robert/MIRFLICKR/images");
 	private JFrame frmClusteredImageRetrieval;
 	private ImageSummaryReference imageReference;
 	private List<Color[]> pathBar = new ArrayList<Color[]>();
@@ -166,8 +166,13 @@ public class GuiInvoker {
 		            startTime=System.currentTimeMillis();
 		            startReset.setText("Reset");
 		            started = true;
+			       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+			   				 System.out.println("0. Start pushed "+ timeLog);
 	            }else{
-	            	System.out.println("Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	            	System.out.println("1.Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	  	          
+			       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					 System.out.println("1. Reset pushed "+ timeLog);
 	            	
 	            	colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
