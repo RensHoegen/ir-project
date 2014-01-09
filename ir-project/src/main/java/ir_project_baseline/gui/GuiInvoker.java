@@ -737,9 +737,30 @@ public class GuiInvoker {
 
 	private void updateImageButtons(final JButton[] colorPickers) {
 		class ImageButtonHandlerclass implements MouseListener {
-
+			private int imageId;
+			
 			public void mouseClicked(MouseEvent event) {
-
+				if(imageId==imageToFind){
+					System.out.println("Found picture after"+ (System.currentTimeMillis()-startTime) + "ms");
+					
+					colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB3.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB4.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB5.setBackground(UIManager.getColor( "Button.background" ));
+					updateImageButtons(colorPickers);
+	            	
+	            	for (int i = 0; i < imagebuttons.length; i++) {
+	            		   imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
+	            		     .getResource("not_available.png")));
+	            	}
+	            	for (int i = 0; i < pathBarButtons.length; i++) {
+	            		   pathBarButtons[i].setIcon(new ImageIcon(GuiInvoker.class
+	            		     .getResource("not_available.png")));
+	            	}
+					
+	            	startTime = System.currentTimeMillis();
+				}
 			}
 
 			public void mousePressed(MouseEvent event) {
@@ -785,6 +806,7 @@ public class GuiInvoker {
 						150, java.awt.Image.SCALE_SMOOTH)));
 				if (sortedImages.size() > 1) {
 					ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
+					handler1.imageId = sortedImages.get(i); 
 					imagebuttons[i].addMouseListener(handler1);
 				}
 			} else {
