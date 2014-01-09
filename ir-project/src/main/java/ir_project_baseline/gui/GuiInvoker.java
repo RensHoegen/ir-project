@@ -1,3 +1,4 @@
+//system B
 package ir_project_baseline.gui;
 
 import ir_project.clustering.ClusteringUtils;
@@ -32,6 +33,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
@@ -39,12 +41,13 @@ import javax.swing.border.MatteBorder;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/Users/Robert/MIRFLICKR/images");
+			"/Users/Robert/MIRFLICKR_THUMBS/images/");
 	private JFrame frmClusteredImageRetrieval;
 	private ImageSummaryReference imageReference;
 	private List<Color[]> pathBar = new ArrayList<Color[]>();
 	private List<Integer> pathBarImages = new ArrayList<Integer>();
 	private int imageToFind;
+	private JLabel statusbar;
 	
 	private JButton startReset;
 	private boolean started=false;
@@ -134,19 +137,19 @@ public class GuiInvoker {
 		System.out.println(colorPickerB1.getBackground());
 
 		colorPickerB2 = new JButton("Pick Color 2");
-		colorPickerB2.setBounds(850, 675, 105, 40);
+		colorPickerB2.setBounds(830, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB2);
 
 		colorPickerB3 = new JButton("Pick Color 3");
-		colorPickerB3.setBounds(975, 675, 105, 40);
+		colorPickerB3.setBounds(933, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB3);
 
 		colorPickerB4 = new JButton("Pick Color 4");
-		colorPickerB4.setBounds(1100, 675, 105, 40);
+		colorPickerB4.setBounds(1036, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB4);
 
 		colorPickerB5 = new JButton("Pick Color 5");
-		colorPickerB5.setBounds(1225, 675, 105, 40);
+		colorPickerB5.setBounds(1139, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB5);
 
 		colorPickerB1.addActionListener(new ActionListener() {
@@ -166,14 +169,14 @@ public class GuiInvoker {
 		            startTime=System.currentTimeMillis();
 		            startReset.setText("Reset");
 		            started = true;
+		        	System.out.println("X. System B");
 			       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
 			   				 System.out.println("0. Start pushed "+ timeLog);
 	            }else{
 	            	System.out.println("1.Reset after " + (System.currentTimeMillis()-startTime) + "ms");
-	  	          
-			       	 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+	  	          String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
 					 System.out.println("1. Reset pushed "+ timeLog);
-	            	
+						statusbar.setText("Find this picture!");
 	            	colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB3.setBackground(UIManager.getColor( "Button.background" ));
@@ -190,26 +193,22 @@ public class GuiInvoker {
 	            		     .getResource("not_available.png")));
 	            	}
 	            	
-	            	
-//	            	int position = 0;
-//	            	while (pathBar.size() > position + 1) {
-//						pathBar.remove(pathBar.size() - 1);
-//						pathBarImages.remove(pathBarImages.size() - 1);
-//					}
-//					List<Integer> clusterCentroids = new ArrayList<Integer>();
-//					for (Collection<Integer> cluster : clusters.asMap().values()) {
-//						clusterCentroids.add(ClusteringUtils
-//								.findClusterRepresentation(imageReference
-//										.getImageSummaries(cluster)));
-//					}
-//					
-//					updateImageButtons(clusters, clusterCentroids);
+
 					
 	            	startTime = System.currentTimeMillis();
 	            }
 	        }
 		});
 
+		statusbar = new JLabel("");
+		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
+		statusbar.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		statusbar.setBounds(845, 358, 308, 45);
+		statusbar.setPreferredSize(new Dimension(150, 150));
+		statusbar.setText("Find this picture!");
+		frmClusteredImageRetrieval.getContentPane().add(statusbar);
+		
 		JLabel arrow1 = new JLabel("next");
 		arrow1.setIcon(new ImageIcon(GuiInvoker.class.getResource("arrow.png")));
 		arrow1.setPreferredSize(new Dimension(32, 31));
@@ -761,8 +760,11 @@ public class GuiInvoker {
 			
 			public void mouseClicked(MouseEvent event) {
 				if(imageId==imageToFind){
-					System.out.println("Found picture after"+ (System.currentTimeMillis()-startTime) + "ms");
-			
+					statusbar.setText("Picture found!");
+					 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					
+					System.out.println("!. Found picture after"+ (System.currentTimeMillis()-startTime) + "ms" + " | " + timeLog);
+					randomizeImageToFind();
 					colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB3.setBackground(UIManager.getColor( "Button.background" ));

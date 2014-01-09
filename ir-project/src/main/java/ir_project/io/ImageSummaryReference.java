@@ -21,7 +21,7 @@ public class ImageSummaryReference implements Serializable {
 	private static final long serialVersionUID = -4948591983304439349L;
 
 	private static final int NUMBER_OF_IMAGES_TO_LOAD = 10000;
-	public final static File THUMBNAIL_IMAGE_DIRECTORY = new File("/home/stefan/Downloads/image_thumbnails");
+	public final static File THUMBNAIL_IMAGE_DIRECTORY = new File("/Users/Robert/MIRFLICKR_THUMBS/thumbnails/1/");
 	private final static File IMAGE_REFERENCE_FILE = new File(THUMBNAIL_IMAGE_DIRECTORY, "reference.obj");
 
 	private final ImageSummary[] imageSummaries;

@@ -1,3 +1,4 @@
+//system A
 package ir_project.gui;
 
 import ir_project.clustering.ClusteringUtils;
@@ -40,7 +41,7 @@ import com.google.common.collect.Multimap;
 
 public class GuiInvoker {
 
-	private static final File IMG_DIR = new File("/home/stefan/Downloads/image_thumbnails");
+	private static final File IMG_DIR = new File("/Users/Robert/MIRFLICKR_THUMBS/images/");
 	private JFrame frmClusteredImageRetrieval;
 	private JLabel statusbar;
 	private ImageSummaryReference imageReference;
@@ -129,13 +130,15 @@ public class GuiInvoker {
 					startReset.setText("Reset");
 					started = true;
 					String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("X. System A");
 					System.out.println("0. Start pushed " + timeLog);
+					
 				} else {
 
 					System.out.println("1.Reset after " + (System.currentTimeMillis() - startTime) + "ms");
-
 					String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
 					System.out.println("1. Reset pushed " + timeLog);
+					statusbar.setText("Find this picture!");
 					int position = 0;
 					while (pathBar.size() > position + 1) {
 						pathBar.remove(pathBar.size() - 1);
@@ -154,19 +157,7 @@ public class GuiInvoker {
 			}
 		});
 
-		// Handlerclass2 handler2 = new Handlerclass2();
-		// JButton btnQuit = new JButton("");
-		// btnQuit.setIcon(new
-		// ImageIcon(GuiInvoker.class.getResource("quit.png")));
-		// btnQuit.setRolloverIcon(new ImageIcon(GuiInvoker.class
-		// .getResource("quit_over.png")));
-		// btnQuit.setBounds(1224, 6, 50, 50);
-		// btnQuit.setBorderPainted(false);
-		// btnQuit.setContentAreaFilled(false);
-		// btnQuit.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		// frmClusteredImageRetrieval.getContentPane().add(btnQuit);
-		// btnQuit.addMouseListener(handler2);
-		// btnQuit.addMouseMotionListener(handler2);
+
 
 		statusbar = new JLabel("");
 		statusbar.setHorizontalAlignment(SwingConstants.CENTER);
@@ -174,7 +165,7 @@ public class GuiInvoker {
 		statusbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		statusbar.setBounds(845, 358, 308, 45);
 		statusbar.setPreferredSize(new Dimension(150, 150));
-		statusbar.setText("Find this image!");
+		statusbar.setText("Find this picture!");
 		frmClusteredImageRetrieval.getContentPane().add(statusbar);
 
 		JLabel arrow1 = new JLabel("next");
@@ -703,14 +694,17 @@ public class GuiInvoker {
 			if (clusterCentroids.size() > i) {
 				imagebuttons[i].setIcon(new ImageIcon(new ImageIcon(new File(IMG_DIR, "im" + (clusterCentroids.get(i) + 1) + ".jpg").getAbsolutePath())
 						.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+			
 				if (clusterCentroids.size() > 1) {
 					ImageButtonHandlerclass handler1 = new ImageButtonHandlerclass();
 					handler1.cluster = clusters.get(i);
 					handler1.clusterImage = clusterCentroids.get(i);
 					imagebuttons[i].addMouseListener(handler1);
 				} else if (imageToFind == clusterCentroids.get(0)) {
-					System.out.println("Found picture after" + (System.currentTimeMillis() - startTime) + "ms");
-
+					statusbar.setText("Picture found!");
+					 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("!. Found picture after"+ (System.currentTimeMillis()-startTime) + "ms" + " | " + timeLog);
+				
 					int position = 0;
 					while (pathBar.size() > position + 1) {
 						pathBar.remove(pathBar.size() - 1);
