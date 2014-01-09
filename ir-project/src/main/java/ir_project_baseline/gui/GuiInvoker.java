@@ -1,5 +1,6 @@
 package ir_project_baseline.gui;
 
+import ir_project.clustering.ClusteringUtils;
 import ir_project.clustering.SearchUtils;
 import ir_project.io.ImageSummaryReference;
 
@@ -21,7 +22,10 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -35,12 +39,26 @@ import javax.swing.border.MatteBorder;
 public class GuiInvoker {
 
 	private static final File IMG_DIR = new File(
-			"/home/stefan/Downloads/image_thumbnails");
+			"C:\\Users\\Rens\\Studie\\School\\Information Retrieval\\MIRFLICKR\\mirflickr08_images1\\images");
 	private JFrame frmClusteredImageRetrieval;
 	private ImageSummaryReference imageReference;
 	private List<Color[]> pathBar = new ArrayList<Color[]>();
 	private List<Integer> pathBarImages = new ArrayList<Integer>();
 	private int imageToFind;
+	
+	private JButton startReset;
+	private boolean started=false;
+	private long startTime;
+	
+	JButton colorPickerB1;
+	JButton colorPickerB2;
+	JButton colorPickerB3;
+	JButton colorPickerB4;
+	JButton colorPickerB5;
+	
+	private JButton[] imagebuttons;
+	private JButton[] pathBarButtons;
+	private JButton[] colorPickers;
 
 	/**
 	 * Launch the application.
@@ -105,36 +123,86 @@ public class GuiInvoker {
 		colorPicker.setBorder(new MatteBorder(0, 0, 0, 1, (Color) Color.BLACK));
 
 		colorPicker.setAlignmentY(0.0f);
-		colorPicker.setBounds(750, 425, 500, 250);
+		colorPicker.setBounds(750, 415, 600, 250);
 		colorPicker.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(colorPicker);
 
-		final JButton colorPickerB1 = new JButton("Pick Color 1");
-		colorPickerB1.setBounds(725, 700, 105, 50);
+		colorPickerB1 = new JButton("Pick Color 1");
+		colorPickerB1.setBounds(725, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB1);
 
 		System.out.println(colorPickerB1.getBackground());
 
-		final JButton colorPickerB2 = new JButton("Pick Color 2");
-		colorPickerB2.setBounds(850, 700, 105, 50);
+		colorPickerB2 = new JButton("Pick Color 2");
+		colorPickerB2.setBounds(850, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB2);
 
-		final JButton colorPickerB3 = new JButton("Pick Color 3");
-		colorPickerB3.setBounds(975, 700, 105, 50);
+		colorPickerB3 = new JButton("Pick Color 3");
+		colorPickerB3.setBounds(975, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB3);
 
-		final JButton colorPickerB4 = new JButton("Pick Color 4");
-		colorPickerB4.setBounds(1100, 700, 105, 50);
+		colorPickerB4 = new JButton("Pick Color 4");
+		colorPickerB4.setBounds(1100, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB4);
 
-		final JButton colorPickerB5 = new JButton("Pick Color 5");
-		colorPickerB5.setBounds(1225, 700, 105, 50);
+		colorPickerB5 = new JButton("Pick Color 5");
+		colorPickerB5.setBounds(1225, 675, 105, 40);
 		frmClusteredImageRetrieval.getContentPane().add(colorPickerB5);
 
 		colorPickerB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB1.setBackground(colorPicker.getColor());
 			}
+		});
+		
+		startReset = new JButton("Start");
+		startReset.setBounds(900, 720, 100, 50);
+		frmClusteredImageRetrieval.getContentPane().add(startReset);
+		startReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+	        {
+	            randomizeImageToFind();
+	            if(!started){
+		            startTime=System.currentTimeMillis();
+		            startReset.setText("Reset");
+		            started = true;
+	            }else{
+	            	System.out.println("Reset after " + (System.currentTimeMillis()-startTime) + "ms");
+	            	
+	            	colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB3.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB4.setBackground(UIManager.getColor( "Button.background" ));
+	            	colorPickerB5.setBackground(UIManager.getColor( "Button.background" ));
+					updateImageButtons(colorPickers);
+	            	
+	            	for (int i = 0; i < imagebuttons.length; i++) {
+	            		   imagebuttons[i].setIcon(new ImageIcon(GuiInvoker.class
+	            		     .getResource("not_available.png")));
+	            	}
+	            	for (int i = 0; i < pathBarButtons.length; i++) {
+	            		   pathBarButtons[i].setIcon(new ImageIcon(GuiInvoker.class
+	            		     .getResource("not_available.png")));
+	            	}
+	            	
+	            	
+//	            	int position = 0;
+//	            	while (pathBar.size() > position + 1) {
+//						pathBar.remove(pathBar.size() - 1);
+//						pathBarImages.remove(pathBarImages.size() - 1);
+//					}
+//					List<Integer> clusterCentroids = new ArrayList<Integer>();
+//					for (Collection<Integer> cluster : clusters.asMap().values()) {
+//						clusterCentroids.add(ClusteringUtils
+//								.findClusterRepresentation(imageReference
+//										.getImageSummaries(cluster)));
+//					}
+//					
+//					updateImageButtons(clusters, clusterCentroids);
+					
+	            	startTime = System.currentTimeMillis();
+	            }
+	        }
 		});
 
 		JLabel arrow1 = new JLabel("next");
@@ -406,10 +474,10 @@ public class GuiInvoker {
 		image_16.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frmClusteredImageRetrieval.getContentPane().add(image_16);
 
-		final JButton[] imagebuttons = { image_1, image_2, image_3, image_4,
+		imagebuttons = new JButton[]{ image_1, image_2, image_3, image_4,
 				image_5, image_6, image_7, image_8, image_9, image_10,
 				image_11, image_12, image_13, image_14, image_15, image_16 };
-		final JButton[] pathBarButtons = { cluster1_image, cluster2_image,
+		pathBarButtons =  new JButton[]{ cluster1_image, cluster2_image,
 				cluster3_image, cluster4_image, cluster5_image };
 
 		for (int i = 0; i < imagebuttons.length; i++) {
@@ -421,37 +489,50 @@ public class GuiInvoker {
 					.getResource("not_available.png")));
 		}
 
-		final JButton[] colorPickers = { colorPickerB1, colorPickerB2,
+		colorPickers = new JButton[]{ colorPickerB1, colorPickerB2,
 				colorPickerB3, colorPickerB4, colorPickerB5 };
 
 		colorPickerB1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB1.setBackground(colorPicker.getColor());
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_1:"+ colorPickerB1.getBackground() + " | " + timeLog);
 			}
 		});
 		colorPickerB2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB2.setBackground(colorPicker.getColor());
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_2:"+ colorPickerB2.getBackground() + " | " + timeLog);
 			}
 		});
 		colorPickerB3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB3.setBackground(colorPicker.getColor());
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_3:"+ colorPickerB3.getBackground() + " | " + timeLog);
+
 			}
 		});
 		colorPickerB4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB4.setBackground(colorPicker.getColor());
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_4:"+ colorPickerB4.getBackground() + " | " + timeLog);
+
 			}
 		});
 		colorPickerB5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				colorPickerB5.setBackground(colorPicker.getColor());
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
+				 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					System.out.println("6. Colorpicker_5:"+ colorPickerB5.getBackground() + " | " + timeLog);
+
 			}
 		});
 
@@ -466,7 +547,7 @@ public class GuiInvoker {
 		search_image.setBounds(845, 42, 308, 309);
 		frmClusteredImageRetrieval.getContentPane().add(search_image);
 
-		randomizeImageToFind();
+		//randomizeImageToFind();
 
 		JLabel frame1 = new JLabel("frame1");
 		frame1.setIcon(new ImageIcon(GuiInvoker.class.getResource("frame.png")));
@@ -669,8 +750,7 @@ public class GuiInvoker {
 
 	private JLabel search_image;
 
-	private void updateImageButtons(final JButton[] colorPickers,
-			final JButton[] imagebuttons, final JButton[] pathBarButtons) {
+	private void updateImageButtons(final JButton[] colorPickers) {
 		class ImageButtonHandlerclass implements MouseListener {
 
 			public void mouseClicked(MouseEvent event) {
@@ -736,12 +816,16 @@ public class GuiInvoker {
 				while (pathBar.size() > position) {
 					pathBar.remove(pathBar.size() - 1);
 					pathBarImages.remove(pathBarImages.size() - 1);
+					
+					 String timeLog = new SimpleDateFormat("dd-MM-yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());
+					 System.out.println("3. Pathbar button "+ String.format("at position: %d,%d | ", event.getX(),
+                            event.getY()) + timeLog);
 				}
 				for (int i = 0; i < colorPickers.length; i++) {
 					colorPickers[i].setBackground(colors[i]);
 				}
 
-				updateImageButtons(colorPickers, imagebuttons, pathBarButtons);
+				updateImageButtons(colorPickers);
 			}
 
 			public void mousePressed(MouseEvent event) {
