@@ -442,7 +442,7 @@ public class GuiInvoker {
 
 		updateImageButtons(clusters, clusterCentroids);
 
-		search_image = new JLabel("search image");
+		search_image = new JLabel("");
 
 		search_image.setPreferredSize(new Dimension(308, 309));
 		search_image.setIconTextGap(10);

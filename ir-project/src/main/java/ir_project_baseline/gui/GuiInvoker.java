@@ -541,7 +541,7 @@ public class GuiInvoker {
 			}
 		});
 
-		search_image = new JLabel("search image");
+		search_image = new JLabel("");
 
 		search_image.setPreferredSize(new Dimension(308, 309));
 		search_image.setIconTextGap(10);
@@ -762,7 +762,7 @@ public class GuiInvoker {
 			public void mouseClicked(MouseEvent event) {
 				if(imageId==imageToFind){
 					System.out.println("Found picture after"+ (System.currentTimeMillis()-startTime) + "ms");
-					
+			
 					colorPickerB1.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB2.setBackground(UIManager.getColor( "Button.background" ));
 	            	colorPickerB3.setBackground(UIManager.getColor( "Button.background" ));
